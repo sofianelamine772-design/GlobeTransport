@@ -1,11 +1,31 @@
 .footer {
-  background-color: var(--color-primary);
+  background-color: #064e3b; /* Vert profond et élégant */
   color: var(--color-text-light);
   padding-top: var(--space-xl);
   position: relative;
-  margin-top: calc(var(--space-xl) + 20px);
-  border-top-left-radius: 100px;
-  border-top-right-radius: 100px;
+  margin-top: calc(var(--space-xl) + 80px); /* Espace pour la vague */
+}
+
+/* SVG Wave */
+.waveContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: translateY(-99%); /* Place la vague juste au-dessus du footer */
+}
+
+.waveSvg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 70px;
+}
+
+.wavePath {
+  fill: #064e3b; /* Même couleur que le background du footer */
 }
 
 .footerGrid {
@@ -19,14 +39,19 @@
 
 @media (min-width: 768px) {
   .footerGrid {
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr; /* Ajustement pour donner plus d'espace au logo et contact */
   }
 }
 
-.logoText {
-  color: var(--color-accent);
-  font-size: 1.5rem;
-  margin-bottom: var(--space-xs);
+.footerLogo {
+  width: 240px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  display: block;
+  background-color: white;
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .description {

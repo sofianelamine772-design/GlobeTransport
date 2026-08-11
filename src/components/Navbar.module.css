@@ -26,8 +26,8 @@
 
 .logo {
   object-fit: contain;
-  transform: scale(1.4);
-  transform-origin: left center;
+  max-height: 65px;
+  width: auto;
 }
 
 /* Bureau */

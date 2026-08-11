@@ -1,12 +1,22 @@
 import ServiceCard from "../../components/ServiceCard";
 import Link from "next/link";
+import FAQ from "../../components/FAQ";
 
 export default function Services() {
   return (
     <>
       <div className="bg-blob bg-blob-accent animate-float" style={{ top: '20%', left: '-5%', width: '400px', height: '400px', animationDelay: '0s' }}></div>
       
-      <section className="section" style={{ backgroundColor: 'var(--color-primary)', color: 'white', textAlign: 'center', padding: '6rem 1rem', clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0 100%)', marginBottom: '4rem' }}>
+      <section className="section" style={{ 
+        backgroundImage: "linear-gradient(rgba(0, 59, 115, 0.8), rgba(0, 59, 115, 0.95)), url('/hero_truck.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        color: 'white', 
+        textAlign: 'center', 
+        padding: '8rem 1rem 6rem', 
+        clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0 100%)', 
+        marginBottom: '4rem' 
+      }}>
         <div className="container animate-fade-in-up">
           <h1 style={{ color: 'white', fontSize: '3rem', marginBottom: '1rem' }}>Nos Services</h1>
           <p style={{ fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto', opacity: 0.9 }}>
@@ -71,6 +81,9 @@ export default function Services() {
           </div>
         </div>
       </section>
+
+      {/* Section FAQ */}
+      <FAQ />
     </>
   );
 }

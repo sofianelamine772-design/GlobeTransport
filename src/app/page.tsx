@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
 import ServiceCard from "../components/ServiceCard";
@@ -45,13 +44,34 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className={`${styles.customImageWrapper} animate-fade-in-right animate-float`} style={{ animationDuration: '6s' }}>
+          <div className={`${styles.customImageWrapper} animate-fade-in-right delay-200`}>
             <div className={styles.customShapeBg}></div>
             <img 
               src="/realistic_mover.png" 
-              alt="Logistique sur mesure" 
+              alt="Déménageur avec carton" 
               className={styles.customImage}
+              style={{ mixBlendMode: 'multiply', boxShadow: 'none', borderRadius: '0' }}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Mini Galerie / Autres visuels */}
+      <section className="section" style={{ padding: '2rem 0', backgroundColor: 'var(--color-background)', position: 'relative', zIndex: 1 }}>
+        <div className="container">
+          <p style={{ textAlign: 'center', color: '#666', marginBottom: '2rem', fontSize: '1rem', fontStyle: 'italic', opacity: 0.8 }}>
+            D'autres aperçus (générés sur mesure)
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
+            <div className="animate-fade-in-up delay-100 hover-lift">
+              <img src="/realistic_mover.png" alt="Déménageur" style={{ width: '220px', height: '160px', objectFit: 'cover', borderRadius: '12px', boxShadow: 'var(--shadow)' }} />
+            </div>
+            <div className="animate-fade-in-up delay-200 hover-lift">
+              <img src="/moving_boxes.png" alt="Cartons" style={{ width: '220px', height: '160px', objectFit: 'cover', borderRadius: '12px', boxShadow: 'var(--shadow)' }} />
+            </div>
+            <div className="animate-fade-in-up delay-300 hover-lift">
+              <img src="/boxes_iso.png" alt="Cartons 3D" style={{ width: '220px', height: '160px', objectFit: 'cover', borderRadius: '12px', boxShadow: 'var(--shadow)' }} />
+            </div>
           </div>
         </div>
       </section>
@@ -115,9 +135,9 @@ export default function Home() {
               En savoir plus sur nous
             </Link>
           </div>
-          <div className={`${styles.featuresImage} animate-fade-in-right delay-400 animate-float`} style={{ animationDuration: '8s' }}>
-            <div className={styles.imageWrapper}>
-               <Image src="/movers_team.png" alt="Équipe Globe Transport" width={800} height={600} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} />
+          <div className={`${styles.featuresImage} animate-fade-in-right delay-400`}>
+            <div className={`${styles.imageWrapper} animate-fade-in-up delay-200`} style={{ flex: 1, minWidth: '300px' }}>
+              <img src="/movers_team.png" alt="Équipe Globe Transport" width={800} height={600} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} />
             </div>
           </div>
         </div>

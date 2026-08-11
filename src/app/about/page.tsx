@@ -1,4 +1,5 @@
 import Image from "next/image";
+import FAQ from "../../components/FAQ";
 
 export default function About() {
   return (
@@ -6,7 +7,16 @@ export default function About() {
       <div className="bg-blob bg-blob-primary animate-float" style={{ top: '10%', left: '-5%', width: '600px', height: '600px', animationDelay: '0s' }}></div>
       <div className="bg-blob bg-blob-accent animate-float" style={{ bottom: '10%', right: '-10%', width: '500px', height: '500px', animationDelay: '-4s' }}></div>
 
-      <section className="section" style={{ backgroundColor: 'var(--color-primary)', color: 'white', textAlign: 'center', padding: '6rem 1rem', clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0 100%)', marginBottom: '4rem' }}>
+      <section className="section" style={{ 
+        backgroundImage: "linear-gradient(rgba(0, 59, 115, 0.8), rgba(0, 59, 115, 0.95)), url('/hero_truck.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        color: 'white', 
+        textAlign: 'center', 
+        padding: '8rem 1rem 6rem', 
+        clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0 100%)', 
+        marginBottom: '4rem' 
+      }}>
         <div className="container animate-fade-in-up">
           <h1 style={{ color: 'white', fontSize: '3rem', marginBottom: '1rem' }}>À Propos de Nous</h1>
           <p style={{ fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto', opacity: 0.9 }}>
@@ -76,6 +86,9 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Section FAQ */}
+      <FAQ />
     </>
   );
 }

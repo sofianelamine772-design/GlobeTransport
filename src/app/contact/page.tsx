@@ -1,97 +1,84 @@
-import styles from './contact.module.css';
+import styles from './page.module.css';
 
 export default function Contact() {
+  const phoneNumber = "0659780270"; // Format technique pour le lien
+  const whatsappUrl = `https://wa.me/33659780270?text=${encodeURIComponent("Bonjour, je souhaite avoir des informations concernant vos services de déménagement.")}`;
+  const emailAddress = "globe-transport-déménagement@hotmail.com";
+
   return (
     <>
-      <div className="bg-blob bg-blob-primary animate-float" style={{ top: '15%', right: '-5%', width: '500px', height: '500px', animationDelay: '0s' }}></div>
-      <div className="bg-blob bg-blob-accent animate-float" style={{ bottom: '15%', left: '-10%', width: '600px', height: '600px', animationDelay: '-3s' }}></div>
-
-      <section className="section" style={{ backgroundColor: 'var(--color-primary)', color: 'white', textAlign: 'center', padding: '6rem 1rem', clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0 100%)', marginBottom: '4rem' }}>
+      <section className="section" style={{ 
+        backgroundImage: "linear-gradient(rgba(0, 59, 115, 0.8), rgba(0, 59, 115, 0.95)), url('/hero_truck.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        color: 'white', 
+        textAlign: 'center', 
+        padding: '8rem 1rem 6rem', 
+        clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0 100%)', 
+        marginBottom: '4rem' 
+      }}>
         <div className="container animate-fade-in-up">
-          <h1 style={{ color: 'white', fontSize: '3rem', marginBottom: '1rem' }}>Contact & Devis</h1>
+          <h1 style={{ color: 'white', fontSize: '3rem', margin: '0 0 1rem 0' }}>Contactez-nous</h1>
           <p style={{ fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto', opacity: 0.9 }}>
-            Prêt à planifier votre déménagement ou transport ? Contactez-nous dès aujourd'hui pour obtenir une estimation gratuite.
+            Notre équipe est à votre disposition pour répondre à toutes vos demandes avec réactivité.
           </p>
         </div>
       </section>
 
-      <section className="section" style={{ position: 'relative', zIndex: 1 }}>
-        <div className={`container ${styles.contactGrid}`}>
-          {/* Informations de contact */}
-          <div className={`${styles.contactInfo} animate-fade-in-left`}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Nos Coordonnées</h2>
-            <p style={{ color: '#555', marginBottom: '2.5rem', fontSize: '1.1rem' }}>
-              Notre équipe est à votre disposition du Lundi au Samedi de 8h à 19h pour répondre à toutes vos interrogations.
-            </p>
-
-            <div className={`${styles.infoBlock} hover-lift`} style={{ padding: '1rem', borderRadius: 'var(--radius)', transition: 'var(--transition)' }}>
-              <div className={styles.icon} style={{ background: 'rgba(5, 150, 105, 0.1)', color: 'var(--color-accent)', width: '50px', height: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>📍</div>
-              <div>
-                <strong style={{ fontSize: '1.2rem', display: 'block', marginBottom: '0.2rem' }}>Adresse Siège Social</strong>
-                <p style={{ color: '#555' }}>140 rue Robespierre, 33400 Talence</p>
+      <section className="section" style={{ position: 'relative', zIndex: 1, paddingBottom: '6rem' }}>
+        <div className="container">
+          <div className={styles.cardsContainer}>
+            
+            {/* Téléphone */}
+            <a href={`tel:${phoneNumber}`} className={`${styles.card} animate-fade-in-up delay-100 hover-lift`}>
+              <div className={styles.iconWrapper}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.icon}>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
               </div>
-            </div>
+              <h3>Téléphone</h3>
+              <p>06 59 78 02 70</p>
+              <span className={styles.actionText}>Appeler directement</span>
+            </a>
 
-            <div className={`${styles.infoBlock} hover-lift`} style={{ padding: '1rem', borderRadius: 'var(--radius)', transition: 'var(--transition)', marginTop: '1rem' }}>
-              <div className={styles.icon} style={{ background: 'rgba(5, 150, 105, 0.1)', color: 'var(--color-accent)', width: '50px', height: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>📞</div>
-              <div>
-                <strong style={{ fontSize: '1.2rem', display: 'block', marginBottom: '0.2rem' }}>Téléphone</strong>
-                <p style={{ color: '#555' }}>06 59 78 02 70</p>
+            {/* Email */}
+            <a href={`mailto:${emailAddress}`} className={`${styles.card} animate-fade-in-up delay-200 hover-lift`}>
+              <div className={styles.iconWrapper}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.icon}>
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
               </div>
-            </div>
+              <h3>Email</h3>
+              <p>{emailAddress}</p>
+              <span className={styles.actionText}>Envoyer un email</span>
+            </a>
 
-            <div className={`${styles.infoBlock} hover-lift`} style={{ padding: '1rem', borderRadius: 'var(--radius)', transition: 'var(--transition)', marginTop: '1rem' }}>
-              <div className={styles.icon} style={{ background: 'rgba(5, 150, 105, 0.1)', color: 'var(--color-accent)', width: '50px', height: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>✉️</div>
-              <div>
-                <strong style={{ fontSize: '1.2rem', display: 'block', marginBottom: '0.2rem' }}>Email</strong>
-                <p style={{ color: '#555' }}>globe-transport-déménagement@hotmail.com</p>
+            {/* WhatsApp */}
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={`${styles.card} ${styles.whatsappCard} animate-fade-in-up delay-300 hover-lift`}>
+              <div className={styles.iconWrapper}>
+                <svg viewBox="0 0 24 24" fill="currentColor" className={styles.icon}>
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a5.8 5.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z"/>
+                </svg>
               </div>
-            </div>
+              <h3>WhatsApp</h3>
+              <p>Discussion instantanée</p>
+              <span className={styles.actionText}>Ouvrir le chat</span>
+            </a>
 
-            <div className="hover-lift" style={{ marginTop: '3rem', padding: '2rem', backgroundColor: 'var(--color-background-alt)', borderRadius: 'var(--radius-lg)' }}>
-              <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--color-primary)' }}>Zone d'intervention</h3>
-              <p style={{ color: '#555', fontSize: '1.05rem', lineHeight: '1.6' }}>Nous intervenons sur toute la France et assurons également des transports vers les pays frontaliers de l'Union Européenne.</p>
-            </div>
-          </div>
-
-          {/* Formulaire de contact */}
-          <div className={`${styles.contactFormContainer} animate-fade-in-right delay-200`} style={{ background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)', border: '1px solid rgba(226, 232, 240, 0.5)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)' }}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--color-primary)' }}>Demander un devis en ligne</h2>
-            <form className={styles.form}>
-              <div className={styles.formGroup}>
-                <label className={styles.label} htmlFor="name">Nom complet</label>
-                <input type="text" id="name" className={styles.input} placeholder="Jean Dupont" required style={{ borderRadius: 'var(--radius)' }} />
+            {/* Adresse */}
+            <a href="https://maps.google.com/?q=140+rue+Robespierre+33400+Talence" target="_blank" rel="noopener noreferrer" className={`${styles.card} animate-fade-in-up delay-400 hover-lift`}>
+              <div className={styles.iconWrapper}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.icon}>
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
               </div>
+              <h3>Adresse</h3>
+              <p>140 rue Robespierre<br/>33400 Talence</p>
+              <span className={styles.actionText}>Voir sur la carte</span>
+            </a>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
-                <div className={styles.formGroup}>
-                  <label className={styles.label} htmlFor="email">Adresse Email</label>
-                  <input type="email" id="email" className={styles.input} placeholder="jean.dupont@email.com" required style={{ borderRadius: 'var(--radius)' }} />
-                </div>
-                <div className={styles.formGroup}>
-                  <label className={styles.label} htmlFor="phone">Téléphone</label>
-                  <input type="tel" id="phone" className={styles.input} placeholder="06 12 34 56 78" required style={{ borderRadius: 'var(--radius)' }} />
-                </div>
-              </div>
-
-              <div className={styles.formGroup}>
-                <label className={styles.label} htmlFor="service">Type de Service</label>
-                <select id="service" className={styles.input} required style={{ borderRadius: 'var(--radius)' }}>
-                  <option value="">Sélectionnez un service...</option>
-                  <option value="demenagement_particulier">Déménagement Particulier</option>
-                  <option value="demenagement_entreprise">Déménagement Entreprise</option>
-                  <option value="transport">Transport de Marchandises</option>
-                  <option value="autre">Autre demande</option>
-                </select>
-              </div>
-
-              <div className={styles.formGroup}>
-                <label className={styles.label} htmlFor="message">Détails de votre demande (Volume, date, adresses...)</label>
-                <textarea id="message" className={styles.textarea} placeholder="Décrivez votre besoin en détail..." rows={5} required style={{ borderRadius: 'var(--radius)' }}></textarea>
-              </div>
-
-              <button type="submit" className="btn btn-primary hover-lift" style={{ width: '100%', fontSize: '1.2rem', padding: '1rem', borderRadius: 'var(--radius-lg)' }}>Envoyer la demande</button>
-            </form>
           </div>
         </div>
       </section>

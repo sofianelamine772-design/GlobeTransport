@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from './Navbar.module.css';
 import { usePathname } from 'next/navigation';
 
@@ -32,7 +31,7 @@ export default function Navbar() {
     <header className={styles.header}>
       <div className={`container ${styles.navbar}`}>
         <Link href="/" className={styles.logoContainer}>
-          <Image 
+          <img 
             src="/logo.png" 
             alt="Globe Transport Logo" 
             width={240} 
