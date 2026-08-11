@@ -131,9 +131,9 @@ export default function Home() {
               </li>
             </ul>
             
-            <Link href="/about" className="btn btn-primary" style={{ marginTop: '1rem' }}>
+            {/* <Link href="/about" className="btn btn-primary" style={{ marginTop: '1rem' }}>
               En savoir plus sur nous
-            </Link>
+            </Link> */}
           </div>
           <div className={`${styles.featuresImage} animate-fade-in-right delay-400`}>
             <div className={`${styles.imageWrapper} animate-fade-in-up delay-200`} style={{ flex: 1, minWidth: '300px' }}>

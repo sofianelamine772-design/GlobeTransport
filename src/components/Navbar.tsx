@@ -30,7 +30,16 @@ export default function Navbar() {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.navbar}`}>
-        <Link href="/" className={styles.logoContainer}>
+        <Link 
+          href="/" 
+          className={styles.logoContainer} 
+          onClick={(e) => {
+            if (pathname === '/') {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            setIsMenuOpen(false);
+          }}
+        >
           <img 
             src="/logo.png" 
             alt="Globe Transport Logo" 
@@ -45,7 +54,7 @@ export default function Navbar() {
           <ul className={styles.navList}>
             <li><Link href="/" className={styles.navLink}>Accueil</Link></li>
             <li><Link href="/services" className={styles.navLink}>Nos Services</Link></li>
-            <li><Link href="/about" className={styles.navLink}>À Propos</Link></li>
+            {/* <li><Link href="/about" className={styles.navLink}>À Propos</Link></li> */}
             <li><Link href="/contact" className={styles.navLink}>Contact</Link></li>
           </ul>
         </nav>
@@ -78,7 +87,7 @@ export default function Navbar() {
           <ul className={styles.navMobileList}>
             <li style={{ transitionDelay: '0.1s' }}><Link href="/" className={styles.navMobileLink}>Accueil</Link></li>
             <li style={{ transitionDelay: '0.15s' }}><Link href="/services" className={styles.navMobileLink}>Nos Services</Link></li>
-            <li style={{ transitionDelay: '0.2s' }}><Link href="/about" className={styles.navMobileLink}>À Propos</Link></li>
+            {/* <li style={{ transitionDelay: '0.2s' }}><Link href="/about" className={styles.navMobileLink}>À Propos</Link></li> */}
             <li style={{ transitionDelay: '0.25s' }}><Link href="/contact" className={styles.navMobileLink}>Contact</Link></li>
           </ul>
           

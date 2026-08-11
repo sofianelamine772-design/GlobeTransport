@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Globe Transport Déménagement",
-  description: "Efficacité, Fiabilité, Rapidité. Services de déménagement et transport professionnel.",
+  title: "Globe Transport | Entreprise de Déménagement à Talence",
+  description: "Globe Transport Déménagement à Talence (33). Services de déménagement sur-mesure pour particuliers et entreprises. Transport sécurisé et devis gratuit !",
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="fr" className={inter.variable}>
       <body>
         <Navbar />
-        <main>{children}</main>
+        <main style={{ overflowX: 'hidden', position: 'relative', width: '100%' }}>{children}</main>
         <Footer />
         <WhatsAppButton />
       </body>

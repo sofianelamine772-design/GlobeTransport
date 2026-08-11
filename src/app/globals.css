@@ -37,7 +37,7 @@
 }
 
 html, body {
-  max-width: 100vw;
+  max-width: 100%;
   /* overflow-x: hidden; (Supprimé car cela casse le position: sticky de la Navbar) */
 }
 

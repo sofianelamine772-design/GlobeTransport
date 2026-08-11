@@ -3,7 +3,6 @@
   color: var(--color-text-light);
   padding-top: var(--space-xl);
   position: relative;
-  margin-top: calc(var(--space-xl) + 80px); /* Espace pour la vague */
 }
 
 /* SVG Wave */
