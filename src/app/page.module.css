@@ -44,6 +44,9 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;
+  }
   .heroTitle {
     font-size: 2.2rem;
   }

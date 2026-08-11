@@ -112,6 +112,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Zone d'activité Section */}
+      <section className="section" style={{ position: 'relative', zIndex: 1, backgroundColor: 'var(--color-background)' }}>
+        <div className="container">
+          <div className={`${styles.sectionHeader} animate-fade-in-up delay-100`}>
+            <h2 className={styles.sectionTitle}>Notre Zone d'Activité</h2>
+            <p className={styles.sectionDescription}>
+              Un service de proximité, avec une portée nationale.
+            </p>
+          </div>
+          <div className="animate-fade-in-up delay-200" style={{ 
+            backgroundColor: 'white', 
+            borderRadius: '16px', 
+            padding: '3rem', 
+            boxShadow: 'var(--shadow-lg)', 
+            textAlign: 'center',
+            maxWidth: '800px',
+            margin: '0 auto',
+            border: '1px solid rgba(0,0,0,0.05)'
+          }}>
+            <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>📍</div>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', color: '#555' }}>
+              Basés à <strong>Bordeaux</strong>, nous intervenons principalement en Nouvelle-Aquitaine pour tous vos besoins logistiques et de déménagement.
+              <br/><br/>
+              Cependant, nous sommes également <strong>disponibles dans toute la France</strong> pour répondre à vos demandes spécifiques.
+              N'hésitez pas à nous contacter pour une étude de faisabilité et obtenir un <strong>devis personnalisé</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Features/Trust Section */}
       <section className="section" style={{ position: 'relative', zIndex: 1, paddingBottom: '8rem' }}>
         <div className={`container ${styles.featuresContainer}`}>
