@@ -1,0 +1,245 @@
+.header {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 1002; /* Au-dessus du menu mobile */
+}
+
+.logo {
+  object-fit: contain;
+  transform: scale(1.4);
+  transform-origin: left center;
+}
+
+/* Bureau */
+.navDesktop {
+  display: none;
+}
+
+.actionsDesktop {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .navDesktop, .actionsDesktop {
+    display: block;
+  }
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+
+.navLink {
+  color: var(--color-text-dark);
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: var(--transition);
+  position: relative;
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -6px;
+  left: 0;
+  background-color: var(--color-accent);
+  transition: var(--transition);
+  border-radius: 2px;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* Bouton Burger */
+.burgerBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 32px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1002; /* Au-dessus du menu mobile */
+}
+
+@media (min-width: 992px) {
+  .burgerBtn {
+    display: none;
+  }
+}
+
+.burgerBtn span {
+  width: 100%;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+  position: relative;
+  transform-origin: 1px;
+}
+
+.burgerBtnOpen span {
+  background: white; /* Blanc car le tiroir est bleu foncé */
+}
+
+.burgerBtnOpen span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.burgerBtnOpen span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.burgerBtnOpen span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* Menu Mobile Overlay & Drawer */
+.mobileMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(2, 32, 68, 0.4);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 1001;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.mobileMenuOverlayOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobileMenuDrawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85vw;
+  max-width: 380px;
+  height: 100vh;
+  background-color: var(--color-primary); /* Fond sombre premium */
+  box-shadow: -15px 0 40px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 2rem 2rem 2rem; /* Laisse de l'espace pour le bouton burger en haut */
+  overflow-y: auto;
+}
+
+.mobileMenuDrawerOpen {
+  transform: translateX(0);
+}
+
+.navMobile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.navMobileList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.navMobileList li {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.mobileMenuDrawerOpen .navMobileList li,
+.mobileMenuDrawerOpen .mobileDivider,
+.mobileMenuDrawerOpen .mobileContactInfo,
+.mobileMenuDrawerOpen .mobileActions {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.navMobileLink {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.navMobileLink:hover, .navMobileLink:active {
+  color: var(--color-accent);
+}
+
+.mobileDivider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 1rem 0 2rem 0;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.mobileContactInfo {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.mobileContactInfo strong {
+  color: white;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.mobileActions {
+  margin-top: auto;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
