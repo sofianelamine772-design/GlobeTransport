@@ -232,5 +232,119 @@
 @keyframes morph {
   0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
   50% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
 }
+
+/* Zone Activity Section */
+.zoneSection {
+  padding: var(--space-xl) 0;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(240,248,255,1) 100%);
+}
+
+.zoneContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .zoneContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.zoneContent {
+  background: white;
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.5);
+  backdrop-filter: blur(10px);
+}
+
+.zoneContent h3 {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.cityTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+
+.cityTag {
+  background: rgba(5, 150, 105, 0.1);
+  color: var(--color-accent);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid rgba(5, 150, 105, 0.2);
+  transition: var(--transition);
+}
+
+.cityTag:hover {
+  background: var(--color-accent);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.nationalCard {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #002244 100%);
+  color: white;
+  padding: 2.5rem;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,59,115,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.nationalCard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  animation: rotateGlow 10s linear infinite;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.nationalIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.nationalCard h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+.nationalCard p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+

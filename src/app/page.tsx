@@ -113,31 +113,43 @@ export default function Home() {
       </section>
 
       {/* Zone d'activité Section */}
-      <section className="section" style={{ position: 'relative', zIndex: 1, backgroundColor: 'var(--color-background)' }}>
+      <section className={styles.zoneSection}>
         <div className="container">
           <div className={`${styles.sectionHeader} animate-fade-in-up delay-100`}>
-            <h2 className={styles.sectionTitle}>Notre Zone d'Activité</h2>
+            <h2 className={styles.sectionTitle}>Notre Zone d'Intervention</h2>
             <p className={styles.sectionDescription}>
-              Un service de proximité, avec une portée nationale.
+              De la proximité à la mobilité nationale, nous vous accompagnons partout.
             </p>
           </div>
-          <div className="animate-fade-in-up delay-200" style={{ 
-            backgroundColor: 'white', 
-            borderRadius: '16px', 
-            padding: '3rem', 
-            boxShadow: 'var(--shadow-lg)', 
-            textAlign: 'center',
-            maxWidth: '800px',
-            margin: '0 auto',
-            border: '1px solid rgba(0,0,0,0.05)'
-          }}>
-            <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>📍</div>
-            <p style={{ fontSize: '1.15rem', lineHeight: '1.8', color: '#555' }}>
-              Basés à <strong>Bordeaux</strong>, nous intervenons principalement en Nouvelle-Aquitaine pour tous vos besoins logistiques et de déménagement.
-              <br/><br/>
-              Cependant, nous sommes également <strong>disponibles dans toute la France</strong> pour répondre à vos demandes spécifiques.
-              N'hésitez pas à nous contacter pour une étude de faisabilité et obtenir un <strong>devis personnalisé</strong>.
-            </p>
+          
+          <div className={styles.zoneContainer}>
+            <div className={`${styles.zoneContent} animate-fade-in-left delay-200`}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                <span style={{ fontSize: '2.5rem' }}>📍</span>
+                <h3 style={{ margin: 0 }}>Bordeaux & Alentours</h3>
+              </div>
+              <p style={{ color: '#555', lineHeight: '1.6', fontSize: '1.1rem' }}>
+                Basés en plein cœur de la région, nous intervenons rapidement pour tous vos besoins logistiques et de déménagement en Gironde.
+              </p>
+              <div className={styles.cityTags}>
+                <span className={styles.cityTag}>Bordeaux</span>
+                <span className={styles.cityTag}>Mérignac</span>
+                <span className={styles.cityTag}>Pessac</span>
+                <span className={styles.cityTag}>Talence</span>
+                <span className={styles.cityTag}>Villenave-d'Ornon</span>
+                <span className={styles.cityTag}>Bègles</span>
+                <span className={styles.cityTag}>Libourne</span>
+                <span className={styles.cityTag}>Arcachon</span>
+              </div>
+            </div>
+
+            <div className={`${styles.nationalCard} animate-fade-in-right delay-300`}>
+              <div className={styles.nationalIcon}>🇫🇷</div>
+              <h3 style={{ color: 'white' }}>Toute la France</h3>
+              <p>
+                Votre projet nous emmène plus loin ? Nous organisons vos transports et déménagements sur l'ensemble du territoire national avec la même exigence de qualité.
+              </p>
+            </div>
           </div>
         </div>
       </section>
