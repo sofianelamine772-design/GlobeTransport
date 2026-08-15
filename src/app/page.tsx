@@ -124,11 +124,8 @@ export default function Home() {
           
           <div className={styles.zoneContainer}>
             <div className={`${styles.zoneContent} animate-fade-in-left delay-200`}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                <span style={{ fontSize: '2.5rem' }}>📍</span>
-                <h3 style={{ margin: 0 }}>Bordeaux & Alentours</h3>
-              </div>
-              <p style={{ color: '#555', lineHeight: '1.6', fontSize: '1.1rem' }}>
+              <h3 style={{ margin: 0, marginBottom: '1rem' }}>Bordeaux & Alentours</h3>
+              <p style={{ color: '#555', lineHeight: '1.6', fontSize: '1.1rem', margin: 0 }}>
                 Basés en plein cœur de la région, nous intervenons rapidement pour tous vos besoins logistiques et de déménagement en Gironde.
               </p>
               <div className={styles.cityTags}>
@@ -141,14 +138,23 @@ export default function Home() {
                 <span className={styles.cityTag}>Libourne</span>
                 <span className={styles.cityTag}>Arcachon</span>
               </div>
+
+              <div className={styles.nationalText}>
+                <h4>Toute la France</h4>
+                <p>
+                  Votre projet nous emmène plus loin ? Nous organisons vos transports et déménagements sur l'ensemble du territoire national avec la même exigence de qualité.
+                </p>
+              </div>
             </div>
 
-            <div className={`${styles.nationalCard} animate-fade-in-right delay-300`}>
-              <div className={styles.nationalIcon}>🇫🇷</div>
-              <h3 style={{ color: 'white' }}>Toute la France</h3>
-              <p>
-                Votre projet nous emmène plus loin ? Nous organisons vos transports et déménagements sur l'ensemble du territoire national avec la même exigence de qualité.
-              </p>
+            <div className={`${styles.mapWrapper} animate-fade-in-right delay-300`}>
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d181140.23199859593!2d-0.7029524021200407!3d44.86370420793616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e8f751ca81%3A0x796386037b397a89!2sBordeaux!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" 
+                style={{ border: 0 }} 
+                allowFullScreen={false} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </div>
