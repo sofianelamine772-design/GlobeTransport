@@ -43,6 +43,52 @@
   flex-wrap: wrap;
 }
 
+.heroWhatsappBanner {
+  background-color: rgba(37, 211, 102, 0.15);
+  border-left: 4px solid #25D366;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(5px);
+  display: inline-block;
+  animation: fade-in-up 0.5s ease-out forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.heroWhatsappBannerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.heroWhatsappBannerContent strong {
+  color: #25D366;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.heroWhatsappBannerContent span {
+  color: #fff;
+  font-size: 1.05rem;
+  opacity: 0.95;
+}
+
+.btnWhatsapp {
+  background-color: #25D366;
+  color: white !important;
+  border: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.btnWhatsapp:hover {
+  background-color: #128C7E;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+}
+
 @media (max-width: 768px) {
   .hero {
     background-attachment: scroll;
