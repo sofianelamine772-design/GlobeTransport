@@ -203,6 +203,81 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Formules de Déménagement Section */}
+      <section className={styles.pricingSection}>
+        <div className="container">
+          <div className={`${styles.sectionHeader} animate-fade-in-up delay-100`}>
+            <h2 className={styles.sectionTitle}>Nos Formules de Déménagement</h2>
+            <p className={styles.sectionDescription}>
+              Choisissez la formule qui correspond le mieux à vos besoins et à votre budget.
+            </p>
+          </div>
+          
+          <div className={styles.pricingGrid}>
+            <div className={`${styles.pricingCard} animate-fade-in-up delay-100`}>
+              <h3 className={styles.pricingTitle}>Économique</h3>
+              <p className={styles.pricingDesc}>La solution idéale pour les petits budgets. Vous emballez, nous transportons.</p>
+              <ul className={styles.pricingList}>
+                <li className={styles.included}>Chargement et déchargement</li>
+                <li className={styles.included}>Transport sécurisé</li>
+                <li className={styles.included}>Mise en place des meubles</li>
+                <li className={styles.excluded}>Démontage / Remontage</li>
+                <li className={styles.excluded}>Emballage des cartons</li>
+                <li className={styles.excluded}>Protection spécifique (Luxe)</li>
+              </ul>
+              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20la%20formule%20Économique." target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ textAlign: 'center' }}>Demander un devis</Link>
+            </div>
+
+            <div className={`${styles.pricingCard} ${styles.popular} animate-fade-in-up delay-200`}>
+              <div className={styles.popularBadge}>Populaire</div>
+              <h3 className={styles.pricingTitle}>Standard</h3>
+              <p className={styles.pricingDesc}>Le meilleur compromis. Nous gérons le mobilier (démontage/remontage), vous gérez les cartons.</p>
+              <ul className={styles.pricingList}>
+                <li className={styles.included}>Chargement et déchargement</li>
+                <li className={styles.included}>Transport sécurisé</li>
+                <li className={styles.included}>Mise en place des meubles</li>
+                <li className={styles.included}>Démontage et remontage</li>
+                <li className={styles.excluded}>Emballage des cartons</li>
+                <li className={styles.excluded}>Protection spécifique (Luxe)</li>
+              </ul>
+              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20la%20formule%20Standard." target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ textAlign: 'center' }}>Demander un devis</Link>
+            </div>
+
+            <div className={`${styles.pricingCard} animate-fade-in-up delay-300`}>
+              <h3 className={styles.pricingTitle}>Luxe</h3>
+              <p className={styles.pricingDesc}>La prestation complète. Protection maximale (meubles, objets fragiles) et prise en charge totale.</p>
+              <ul className={styles.pricingList}>
+                <li className={styles.included}>Chargement et déchargement</li>
+                <li className={styles.included}>Transport sécurisé</li>
+                <li className={styles.included}>Mise en place des meubles</li>
+                <li className={styles.included}>Démontage et remontage</li>
+                <li className={styles.included}>Emballage complet (fragile & non fragile)</li>
+                <li className={styles.included}>Protection (Housses de meubles, bulles pro)</li>
+              </ul>
+              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20la%20formule%20Luxe." target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ textAlign: 'center' }}>Demander un devis</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Visite & Rendez-vous CTA Section */}
+      <section className={styles.ctaSection}>
+        <div className={styles.ctaContainer}>
+          <h2 className={`${styles.ctaTitle} animate-fade-in-up`}>Visite gratuite & Devis gratuit</h2>
+          <p className={`${styles.ctaSubtitle} animate-fade-in-up delay-100`}>
+            Prenez rendez-vous dès aujourd'hui. Nos experts se déplacent gratuitement pour évaluer vos besoins et vous proposer un devis sur mesure.
+          </p>
+          <div className={`${styles.ctaActions} animate-fade-in-up delay-200`}>
+            <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20prendre%20rendez-vous%20pour%20une%20visite%20gratuite%20et%20un%20devis." target="_blank" rel="noopener noreferrer" className={styles.btnWhatsappLarge}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a5.8 5.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z"/>
+              </svg>
+              Contactez-nous via WhatsApp : 06 59 78 02 70
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

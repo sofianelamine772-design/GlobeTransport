@@ -380,3 +380,170 @@
   margin: 0;
   line-height: 1.5;
 }
+
+/* Pricing Formulas Section */
+.pricingSection {
+  padding: var(--space-xl) 0;
+  background-color: var(--color-background);
+  position: relative;
+  z-index: 1;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .pricingGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pricingCard {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.pricingCard:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+}
+
+.pricingCard.popular {
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 20px 40px rgba(5, 150, 105, 0.15);
+}
+
+.popularBadge {
+  position: absolute;
+  top: 1.5rem;
+  right: -2.5rem;
+  background: var(--color-accent);
+  color: white;
+  padding: 0.5rem 3rem;
+  transform: rotate(45deg);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pricingTitle {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.pricingDesc {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  min-height: 45px;
+}
+
+.pricingList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  flex-grow: 1;
+}
+
+.pricingList li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: #444;
+}
+
+.pricingList li:last-child {
+  border-bottom: none;
+}
+
+.pricingList li.included::before {
+  content: '✓';
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+.pricingList li.excluded {
+  color: #aaa;
+  text-decoration: line-through;
+}
+.pricingList li.excluded::before {
+  content: '✕';
+  color: #aaa;
+  font-weight: bold;
+}
+
+/* Visit CTA Section */
+.ctaSection {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #002244 100%);
+  padding: 4rem 0;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--space-xl);
+}
+
+.ctaContainer {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ctaTitle {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.ctaSubtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btnWhatsappLarge {
+  background-color: #25D366;
+  color: white !important;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+  text-decoration: none;
+}
+
+.btnWhatsappLarge:hover {
+  background-color: #128C7E;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+}
