@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.footerGrid}`}>
         <div className={styles.col}>
-          <img src="/logo.png" alt="Globe Transport Logo" className={styles.footerLogo} />
+          <img src="/logofinal.png" alt="Globe Transport Logo" className={styles.footerLogo} />
           <p className={styles.description}>
             EFFICACITÉ • FIABILITÉ • RAPIDITÉ.<br/>
             Votre partenaire de confiance pour tous vos besoins en déménagement et transport.

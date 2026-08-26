@@ -40,6 +40,63 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Formules de Déménagement Section */}
+      <section className={styles.pricingSection}>
+        <div className="container">
+          <div className={`${styles.sectionHeader} animate-fade-in-up delay-100`}>
+            <h2 className={styles.sectionTitle}>Nos Formules de Déménagement</h2>
+            <p className={styles.sectionDescription}>
+              Choisissez la formule qui correspond le mieux à vos besoins et à votre budget.
+            </p>
+          </div>
+          
+          <div className={styles.pricingGrid}>
+            <div className={`${styles.pricingCard} animate-fade-in-up delay-100`}>
+              <h3 className={styles.pricingTitle}>Économique</h3>
+              <p className={styles.pricingDesc}>La solution idéale pour les petits budgets. Vous emballez, nous transportons.</p>
+              <ul className={styles.pricingList}>
+                <li className={styles.included}>Chargement et déchargement</li>
+                <li className={styles.included}>Transport sécurisé</li>
+                <li className={styles.included}>Mise en place des meubles</li>
+                <li className={styles.excluded}>Démontage / Remontage</li>
+                <li className={styles.excluded}>Emballage des cartons</li>
+                <li className={styles.excluded}>Protection spécifique (Luxe)</li>
+              </ul>
+              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20la%20formule%20Économique." target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ textAlign: 'center' }}>Demander un devis</Link>
+            </div>
+
+            <div className={`${styles.pricingCard} ${styles.popular} animate-fade-in-up delay-200`}>
+              <div className={styles.popularBadge}>Populaire</div>
+              <h3 className={styles.pricingTitle}>Standard</h3>
+              <p className={styles.pricingDesc}>Le meilleur compromis. Nous gérons le mobilier (démontage/remontage), vous gérez les cartons.</p>
+              <ul className={styles.pricingList}>
+                <li className={styles.included}>Chargement et déchargement</li>
+                <li className={styles.included}>Transport sécurisé</li>
+                <li className={styles.included}>Mise en place des meubles</li>
+                <li className={styles.included}>Démontage et remontage</li>
+                <li className={styles.excluded}>Emballage des cartons</li>
+                <li className={styles.excluded}>Protection spécifique (Luxe)</li>
+              </ul>
+              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20la%20formule%20Standard." target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ textAlign: 'center' }}>Demander un devis</Link>
+            </div>
+
+            <div className={`${styles.pricingCard} animate-fade-in-up delay-300`}>
+              <h3 className={styles.pricingTitle}>Luxe</h3>
+              <p className={styles.pricingDesc}>La prestation complète. Protection maximale (meubles, objets fragiles) et prise en charge totale.</p>
+              <ul className={styles.pricingList}>
+                <li className={styles.included}>Chargement et déchargement</li>
+                <li className={styles.included}>Transport sécurisé</li>
+                <li className={styles.included}>Mise en place des meubles</li>
+                <li className={styles.included}>Démontage et remontage</li>
+                <li className={styles.included}>Emballage complet (fragile & non fragile)</li>
+                <li className={styles.included}>Protection (Housses de meubles, bulles pro)</li>
+              </ul>
+              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20la%20formule%20Luxe." target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ textAlign: 'center' }}>Demander un devis</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Custom Logistics Section */}
       <section className={styles.customSection}>
         <div className={`container ${styles.customContainer}`}>
@@ -199,63 +256,6 @@ export default function Home() {
           <div className={`${styles.featuresImage} animate-fade-in-right delay-400`}>
             <div className={`${styles.imageWrapper} animate-fade-in-up delay-200`} style={{ flex: 1, minWidth: '300px' }}>
               <img src="/movers_team.png" alt="Équipe Globe Transport" width={800} height={600} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Formules de Déménagement Section */}
-      <section className={styles.pricingSection}>
-        <div className="container">
-          <div className={`${styles.sectionHeader} animate-fade-in-up delay-100`}>
-            <h2 className={styles.sectionTitle}>Nos Formules de Déménagement</h2>
-            <p className={styles.sectionDescription}>
-              Choisissez la formule qui correspond le mieux à vos besoins et à votre budget.
-            </p>
-          </div>
-          
-          <div className={styles.pricingGrid}>
-            <div className={`${styles.pricingCard} animate-fade-in-up delay-100`}>
-              <h3 className={styles.pricingTitle}>Économique</h3>
-              <p className={styles.pricingDesc}>La solution idéale pour les petits budgets. Vous emballez, nous transportons.</p>
-              <ul className={styles.pricingList}>
-                <li className={styles.included}>Chargement et déchargement</li>
-                <li className={styles.included}>Transport sécurisé</li>
-                <li className={styles.included}>Mise en place des meubles</li>
-                <li className={styles.excluded}>Démontage / Remontage</li>
-                <li className={styles.excluded}>Emballage des cartons</li>
-                <li className={styles.excluded}>Protection spécifique (Luxe)</li>
-              </ul>
-              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20la%20formule%20Économique." target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ textAlign: 'center' }}>Demander un devis</Link>
-            </div>
-
-            <div className={`${styles.pricingCard} ${styles.popular} animate-fade-in-up delay-200`}>
-              <div className={styles.popularBadge}>Populaire</div>
-              <h3 className={styles.pricingTitle}>Standard</h3>
-              <p className={styles.pricingDesc}>Le meilleur compromis. Nous gérons le mobilier (démontage/remontage), vous gérez les cartons.</p>
-              <ul className={styles.pricingList}>
-                <li className={styles.included}>Chargement et déchargement</li>
-                <li className={styles.included}>Transport sécurisé</li>
-                <li className={styles.included}>Mise en place des meubles</li>
-                <li className={styles.included}>Démontage et remontage</li>
-                <li className={styles.excluded}>Emballage des cartons</li>
-                <li className={styles.excluded}>Protection spécifique (Luxe)</li>
-              </ul>
-              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20la%20formule%20Standard." target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ textAlign: 'center' }}>Demander un devis</Link>
-            </div>
-
-            <div className={`${styles.pricingCard} animate-fade-in-up delay-300`}>
-              <h3 className={styles.pricingTitle}>Luxe</h3>
-              <p className={styles.pricingDesc}>La prestation complète. Protection maximale (meubles, objets fragiles) et prise en charge totale.</p>
-              <ul className={styles.pricingList}>
-                <li className={styles.included}>Chargement et déchargement</li>
-                <li className={styles.included}>Transport sécurisé</li>
-                <li className={styles.included}>Mise en place des meubles</li>
-                <li className={styles.included}>Démontage et remontage</li>
-                <li className={styles.included}>Emballage complet (fragile & non fragile)</li>
-                <li className={styles.included}>Protection (Housses de meubles, bulles pro)</li>
-              </ul>
-              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20la%20formule%20Luxe." target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ textAlign: 'center' }}>Demander un devis</Link>
             </div>
           </div>
         </div>

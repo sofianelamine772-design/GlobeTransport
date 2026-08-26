@@ -1,9 +1,9 @@
 .header {
-  background: #ffffff;
+  background: var(--color-background);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -154,8 +154,8 @@
   width: 85vw;
   max-width: 380px;
   height: 100vh;
-  background-color: var(--color-primary); /* Fond sombre premium */
-  box-shadow: -15px 0 40px rgba(0, 0, 0, 0.3);
+  background-color: var(--color-background-alt); /* Fond sombre premium */
+  box-shadow: -15px 0 40px rgba(0, 0, 0, 0.5);
   z-index: 1001;
   transform: translateX(100%);
   transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);

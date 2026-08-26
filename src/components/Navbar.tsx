@@ -41,7 +41,7 @@ export default function Navbar() {
           }}
         >
           <img 
-            src="/logoGG.jpg" 
+            src="/logofinal.png" 
             alt="Globe Transport Logo" 
             width={240} 
             height={80} 

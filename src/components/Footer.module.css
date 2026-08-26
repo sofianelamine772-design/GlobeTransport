@@ -1,5 +1,5 @@
 .footer {
-  background-color: #064e3b; /* Vert profond et élégant */
+  background-color: var(--color-background-alt);
   color: var(--color-text-light);
   padding-top: var(--space-xl);
   position: relative;
@@ -24,7 +24,7 @@
 }
 
 .wavePath {
-  fill: #064e3b; /* Même couleur que le background du footer */
+  fill: var(--color-background-alt);
 }
 
 .footerGrid {
@@ -47,10 +47,11 @@
   height: auto;
   margin-bottom: 1.5rem;
   display: block;
-  background-color: white;
+  background-color: var(--color-background);
   padding: 1rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .description {
