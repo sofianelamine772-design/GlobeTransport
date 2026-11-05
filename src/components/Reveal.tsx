@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 /**
  * Fait apparaître en douceur les éléments `.reveal` lorsqu'ils entrent à l'écran.
- * Sans JavaScript, le contenu reste visible (la classe `reveal-ready` n'est jamais ajoutée).
+ * Sans JavaScripfrft, le contenu reste visible (la classe `reveal-ready` n'est jamais ajoutée).
  */
 export default function Reveal() {
   const pathname = usePathname();

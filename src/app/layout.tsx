@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
 import Reveal from "../components/Reveal";
-import { SITE } from "../lib/site";
+import { SITE, SITE_URL } from "../lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,6 +28,8 @@ const satisfy = Satisfy({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  applicationName: "Globe Transport Déménagement",
   title: {
     default: "Globe Transport | Déménagement à Talence, Bordeaux & partout en France",
     template: "%s | Globe Transport Déménagement",
@@ -36,12 +38,20 @@ export const metadata: Metadata = {
     "Globe Transport Déménagement à Talence (33) : déménagement de particuliers et de professionnels, transport sécurisé, visite et devis gratuits. Bordeaux, Gironde et toute la France.",
   keywords: [
     "déménagement Talence",
+    "déménageur Talence",
+    "déménagement Bordeaux",
     "déménageur Bordeaux",
     "déménagement Gironde",
-    "déménagement entreprise",
-    "transport de marchandises",
+    "déménagement Mérignac",
+    "déménagement Pessac",
+    "déménagement entreprise Bordeaux",
+    "transport de marchandises Gironde",
+    "garde-meubles Bordeaux",
     "devis déménagement gratuit",
+    "déménagement longue distance",
   ],
+  formatDetection: { telephone: true },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Globe Transport Déménagement",
     description: "Votre nouveau départ, notre priorité ! Un déménagement en toute sérénité, partout, pour vous.",
@@ -58,7 +68,11 @@ export const viewport: Viewport = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "MovingCompany",
+  "@id": `${SITE_URL}/#entreprise`,
   name: SITE.name,
+  url: SITE_URL,
+  logo: `${SITE_URL}/icon-512.png`,
+  image: `${SITE_URL}/opengraph-image.png`,
   telephone: SITE.phoneTel,
   email: SITE.email,
   address: {
@@ -66,10 +80,26 @@ const jsonLd = {
     streetAddress: SITE.street,
     postalCode: SITE.postalCode,
     addressLocality: SITE.city,
+    addressRegion: "Nouvelle-Aquitaine",
     addressCountry: "FR",
   },
-  areaServed: ["Bordeaux", "Talence", "Gironde", "France"],
+  areaServed: [
+    "Talence", "Bordeaux", "Mérignac", "Pessac", "Villenave-d'Ornon", "Bègles",
+    "Libourne", "Arcachon", "Gironde", "France",
+  ].map((name) => ({ "@type": "Place", name })),
   slogan: "Votre nouveau départ, notre priorité !",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Services de déménagement",
+    itemListElement: [
+      "Déménagement de particuliers",
+      "Déménagement de professionnels",
+      "Transport de marchandises",
+      "Garde-meubles et stockage",
+      "Transport spécialisé",
+      "Service d'emballage",
+    ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
+  },
 };
 
 export default function RootLayout({

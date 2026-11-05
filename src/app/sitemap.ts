@@ -1,32 +1,13 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
+import { SITE_URL } from '../lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://globetransport.fr'; // Remplacez par votre vrai domaine
-
+  const now = new Date();
   return [
-    {
-      url: `${baseUrl}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    /* {
-      url: `${baseUrl}/about`,
-      lastModifddied: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.8,
-    }, */
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
+    { url: `${SITE_URL}/`, lastModified: now, changeFrequency: 'monthly', priority: 1 },
+    { url: `${SITE_URL}/services`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: 'yearly', priority: 0.8 },
+    { url: `${SITE_URL}/mentions-legales`, lastModified: now, changeFrequency: 'yearly', priority: 0.2 },
+    { url: `${SITE_URL}/politique-confidentialite`, lastModified: now, changeFrequency: 'yearly', priority: 0.2 },
   ];
 }

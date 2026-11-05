@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Contact & Devis gratuit",
   description:
     "Contactez Globe Transport Déménagement à Talence : téléphone, WhatsApp ou email. Visite et devis gratuits pour votre déménagement.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function Contact() {

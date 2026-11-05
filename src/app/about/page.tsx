@@ -4,6 +4,8 @@ import { IconCheck, IconShield, IconClock } from "../../components/Icons";
 
 export const metadata: Metadata = {
   title: "À propos",
+  // Page non liée dans le menu pour l'instant : on évite qu'elle soit indexée.
+  robots: { index: false, follow: true },
 };
 
 const VALUES = [

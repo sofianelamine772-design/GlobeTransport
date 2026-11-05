@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
@@ -10,6 +11,10 @@ import {
   IconHome, IconBuilding, IconShield, IconHandshake, IconTruck,
   IconWhatsApp, IconPhone, IconChat, IconClipboard, IconCheck, IconClock, IconPin,
 } from "../components/Icons";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const PILLARS = [
   { icon: <IconHome />, label: "Particuliers" },
@@ -48,7 +53,7 @@ export default function Home() {
         <GoldSwoosh className={styles.heroSwoosh} />
         <div className={`container ${styles.heroGrid}`}>
           <div className={styles.heroContent}>
-            <span className="eyebrow eyebrow-left animate-fade-in-up">Déménagement · Talence &amp; toute la France</span>
+            <span className="eyebrow eyebrow-left animate-fade-in-up">Déménageur à Talence · Bordeaux &amp; toute la France</span>
 
             <h1 className={styles.heroTitle}>
               <span className={`${styles.heroScript} script gold-text animate-fade-in-up delay-100`}>
@@ -213,6 +218,40 @@ export default function Home() {
                 </div>
               </li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ TEXTE SEO LOCAL ============ */}
+      <section className="section">
+        <div className={`container ${styles.seoGrid}`}>
+          <div className={`${styles.seoIntro} reveal`}>
+            <span className="eyebrow eyebrow-left">Votre déménageur local</span>
+            <h2>Déménagement à Talence, Bordeaux <span className="gold-text">&amp; en Gironde</span></h2>
+            <p className="script gold-text">Un savoir-faire de proximité.</p>
+          </div>
+          <div className={`${styles.seoText} reveal delay-200`}>
+            <p>
+              Installée au <strong>140 rue Robespierre à Talence</strong>, Globe Transport Déménagement accompagne
+              les particuliers et les professionnels de la <strong>métropole bordelaise</strong> pour tous leurs projets
+              de déménagement : studio, appartement, maison, bureaux ou local commercial.
+            </p>
+            <p>
+              Que vous quittiez <strong>Bordeaux</strong> pour <strong>Mérignac</strong>, <strong>Pessac</strong> ou{' '}
+              <strong>Bègles</strong>, que vous partiez vers <strong>Arcachon</strong> ou <strong>Libourne</strong>, ou que
+              votre nouvelle vie vous attende à l&apos;autre bout de la France, nous organisons chaque étape :
+              visite et devis gratuits, fourniture des cartons, emballage, démontage et remontage des meubles,
+              transport sécurisé et installation.
+            </p>
+            <p>
+              Notre objectif est simple : un <strong>déménagement sans stress</strong>, au juste prix, réalisé par une
+              équipe soigneuse et ponctuelle. Besoin d&apos;un <strong>garde-meubles</strong> entre deux logements ou d&apos;un
+              <strong> transport de marchandises</strong> ? Nous avons aussi la solution.
+            </p>
+            <div className={styles.seoLinks}>
+              <Link href="/services" className="btn btn-outline">Découvrir nos services</Link>
+              <Link href="/contact" className="btn btn-primary">Demander un devis gratuit</Link>
+            </div>
           </div>
         </div>
       </section>

@@ -3,6 +3,7 @@ import { SITE } from "../../lib/site";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
+  alternates: { canonical: "/politique-confidentialite" },
 };
 
 export default function PolitiqueConfidentialite() {

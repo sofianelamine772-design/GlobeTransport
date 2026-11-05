@@ -36,6 +36,13 @@
   display: none;
 }
 
+.questionText {
+  font: inherit;
+  color: inherit;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
 .question:hover {
   color: var(--gold-light);
 }

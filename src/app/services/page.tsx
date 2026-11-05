@@ -10,9 +10,10 @@ import {
 import styles from "./services.module.css";
 
 export const metadata: Metadata = {
-  title: "Nos Services",
+  title: "Services de déménagement à Bordeaux & Talence",
   description:
-    "Déménagement de particuliers et d'entreprises, transport de marchandises, garde-meubles, transport spécialisé et emballage. Formules Économique, Standard et Luxe.",
+    "Déménagement de particuliers et d'entreprises, transport de marchandises, garde-meubles, transport spécialisé et emballage en Gironde. Formules Économique, Standard et Luxe, devis gratuit.",
+  alternates: { canonical: "/services" },
 };
 
 const SERVICES = [
