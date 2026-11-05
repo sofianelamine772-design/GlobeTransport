@@ -1,96 +1,186 @@
 .header {
-  background: var(--color-background);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(5, 5, 5, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--gold-line);
+  opacity: 0.45;
+}
+
+.headerScrolled {
+  background: rgba(5, 5, 5, 0.96);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
 }
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 84px;
+  gap: 1.5rem;
 }
 
-.logoContainer {
+/* Marque */
+.brand {
   display: flex;
   align-items: center;
-  height: 100%;
-  position: relative;
-  /* Le logo reste derrière le menu mobile (pas de z-index super élevé) */
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
 
-.logo {
-  object-fit: contain;
-  max-height: 65px;
+.brandGlobe {
+  height: 52px;
   width: auto;
+  filter: drop-shadow(0 4px 14px rgba(212, 175, 55, 0.25));
+  transition: transform 0.6s var(--ease);
+}
+
+.brand:hover .brandGlobe {
+  transform: rotate(-6deg) scale(1.04);
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brandName {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.18rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.brandSub {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.brandSub::before {
+  content: '';
+  width: 14px;
+  height: 1px;
+  background: var(--gold);
 }
 
 /* Bureau */
-.navDesktop {
-  display: none;
-}
-
+.navDesktop,
 .actionsDesktop {
   display: none;
 }
 
 @media (min-width: 992px) {
-  .navDesktop, .actionsDesktop {
+  .navDesktop {
     display: block;
+  }
+  .actionsDesktop {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
   }
 }
 
 .navList {
   display: flex;
   list-style: none;
-  gap: 2.5rem;
+  gap: 2.4rem;
 }
 
 .navLink {
-  color: var(--color-text-dark);
-  font-weight: 600;
-  font-size: 1.05rem;
-  transition: var(--transition);
+  font-family: var(--font-display);
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
   position: relative;
+  padding: 0.4rem 0;
 }
 
-.navLink:hover {
-  color: var(--color-primary);
+.navLink:hover,
+.navLinkActive {
+  color: var(--gold-light);
 }
 
 .navLink::after {
   content: '';
   position: absolute;
-  width: 0;
-  height: 3px;
-  bottom: -6px;
+  height: 1px;
+  bottom: -2px;
+  left: 50%;
+  right: 50%;
+  background: var(--gold);
+  transition: left 0.35s var(--ease), right 0.35s var(--ease);
+}
+
+.navLink:hover::after,
+.navLinkActive::after {
   left: 0;
-  background-color: var(--color-accent);
-  transition: var(--transition);
-  border-radius: 2px;
+  right: 0;
 }
 
-.navLink:hover::after {
-  width: 100%;
+.phoneLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--gold-light);
+  letter-spacing: 0.04em;
+  transition: color 0.3s ease;
 }
 
-/* Bouton Burger */
+.phoneLink svg {
+  width: 17px;
+  height: 17px;
+}
+
+.phoneLink:hover {
+  color: var(--gold-pale);
+}
+
+@media (min-width: 992px) and (max-width: 1100px) {
+  .phoneLink {
+    display: none;
+  }
+}
+
+/* Burger */
 .burgerBtn {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 32px;
-  height: 24px;
+  justify-content: space-between;
+  width: 28px;
+  height: 18px;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 1002; /* Au-dessus du menu mobile */
+  z-index: 1002;
 }
 
 @media (min-width: 992px) {
@@ -101,16 +191,11 @@
 
 .burgerBtn span {
   width: 100%;
-  height: 3px;
-  background: var(--color-primary);
-  border-radius: 10px;
-  transition: all 0.3s cubic-bezier(0.77, 0, 0.175, 1);
-  position: relative;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: all 0.35s cubic-bezier(0.77, 0, 0.175, 1);
   transform-origin: 1px;
-}
-
-.burgerBtnOpen span {
-  background: white; /* Blanc car le tiroir est bleu foncé */
 }
 
 .burgerBtnOpen span:nth-child(1) {
@@ -119,23 +204,20 @@
 
 .burgerBtnOpen span:nth-child(2) {
   opacity: 0;
-  transform: translateX(20px);
+  transform: translateX(16px);
 }
 
 .burgerBtnOpen span:nth-child(3) {
   transform: rotate(-45deg);
 }
 
-/* Menu Mobile Overlay & Drawer */
+/* Menu mobile */
 .mobileMenuOverlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(2, 32, 68, 0.4);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   z-index: 1001;
   opacity: 0;
   pointer-events: none;
@@ -151,17 +233,21 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 85vw;
+  width: 86vw;
   max-width: 380px;
   height: 100vh;
-  background-color: var(--color-background-alt); /* Fond sombre premium */
-  box-shadow: -15px 0 40px rgba(0, 0, 0, 0.5);
+  height: 100dvh;
+  background:
+    radial-gradient(ellipse 80% 40% at 100% 0%, rgba(212, 175, 55, 0.14), transparent 70%),
+    var(--surface);
+  border-left: 1px solid var(--border);
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.6);
   z-index: 1001;
   transform: translateX(100%);
   transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
   display: flex;
   flex-direction: column;
-  padding: 6rem 2rem 2rem 2rem; /* Laisse de l'espace pour le bouton burger en haut */
+  padding: 6.5rem 2rem 2rem;
   overflow-y: auto;
 }
 
@@ -179,11 +265,14 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 1.4rem;
+  margin-bottom: 1.5rem;
 }
 
-.navMobileList li {
+.navMobileList li,
+.mobileDivider,
+.mobileContactInfo,
+.mobileActions {
   opacity: 0;
   transform: translateX(30px);
   transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
@@ -198,48 +287,67 @@
 }
 
 .navMobileLink {
-  color: white;
-  font-size: 1.8rem;
+  font-family: var(--font-display);
+  color: var(--text);
+  font-size: 1.5rem;
   font-weight: 600;
-  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   transition: color 0.3s ease;
-  display: inline-block;
-  position: relative;
 }
 
-.navMobileLink:hover, .navMobileLink:active {
-  color: var(--color-accent);
+.navMobileLink:hover,
+.navMobileLink:active {
+  color: var(--gold-light);
 }
 
 .mobileDivider {
   height: 1px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 1rem 0 2rem 0;
-  opacity: 0;
-  transform: translateX(30px);
-  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  background: var(--gold-line);
+  opacity: 0.5;
+  margin: 0.5rem 0 2rem;
 }
 
 .mobileContactInfo {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.95rem;
-  line-height: 1.8;
-  margin-bottom: 3rem;
-  opacity: 0;
-  transform: translateX(30px);
-  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
 }
 
-.mobileContactInfo strong {
-  color: white;
-  font-size: 1.1rem;
-  display: block;
-  margin-bottom: 0.5rem;
+.mobileContactInfo a {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  word-break: break-all;
+}
+
+.mobileContactInfo svg {
+  width: 18px;
+  height: 18px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.mobileScript {
+  font-family: var(--font-script);
+  color: var(--gold-light);
+  font-size: 1.8rem;
+  line-height: 1;
+  margin-bottom: 0.3rem;
 }
 
 .mobileActions {
   margin-top: auto;
-  opacity: 0;
-  transform: translateX(30px);
-  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media (max-width: 380px) {
+  .brandName {
+    font-size: 1rem;
+  }
+  .brandGlobe {
+    height: 44px;
+  }
 }

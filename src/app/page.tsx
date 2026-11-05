@@ -1,228 +1,254 @@
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./page.module.css";
 import ServiceCard from "../components/ServiceCard";
+import Pricing from "../components/Pricing";
+import FAQ from "../components/FAQ";
+import GoldSwoosh from "../components/GoldSwoosh";
+import { SITE, whatsappLink } from "../lib/site";
+import {
+  IconHome, IconBuilding, IconShield, IconHandshake, IconTruck,
+  IconWhatsApp, IconPhone, IconChat, IconClipboard, IconCheck, IconClock, IconPin,
+} from "../components/Icons";
+
+const PILLARS = [
+  { icon: <IconHome />, label: "Particuliers" },
+  { icon: <IconBuilding />, label: "Professionnels" },
+  { icon: <IconShield />, label: "Sécurité" },
+  { icon: <IconHandshake />, label: "Confiance" },
+];
+
+const STEPS = [
+  {
+    icon: <IconChat />,
+    title: "Prise de contact",
+    text: "Appelez-nous ou écrivez-nous sur WhatsApp. Nous échangeons sur votre projet, vos dates et vos contraintes.",
+  },
+  {
+    icon: <IconClipboard />,
+    title: "Visite & devis gratuits",
+    text: "Nous nous déplaçons chez vous pour évaluer le volume et vous remettons un devis clair, détaillé et sans engagement.",
+  },
+  {
+    icon: <IconTruck />,
+    title: "Déménagement serein",
+    text: "Le jour J, notre équipe s'occupe de tout : protection, chargement, transport sécurisé et installation.",
+  },
+];
+
+const CITIES = ["Bordeaux", "Talence", "Mérignac", "Pessac", "Villenave-d'Ornon", "Bègles", "Libourne", "Arcachon"];
 
 export default function Home() {
+  const waVisit = whatsappLink("Bonjour, je souhaite prendre rendez-vous pour une visite gratuite / un devis gratuit.");
+
   return (
     <>
-      {/* Formes abstraites animées en arrière-plan */}
-      <div className="bg-blob bg-blob-primary animate-float" style={{ top: '20%', left: '-10%', width: '500px', height: '500px', animationDelay: '0s' }}></div>
-      <div className="bg-blob bg-blob-accent animate-float" style={{ top: '60%', right: '-5%', width: '400px', height: '400px', animationDelay: '-3s' }}></div>
-
-      {/* Hero Section */}
+      {/* ============ HERO ============ */}
       <section className={styles.hero}>
-        <div className={`container ${styles.heroContainer}`}>
-          <div className={`${styles.heroContent} animate-fade-in-up`}>
+        <GoldSwoosh className={styles.heroSwoosh} />
+        <div className={`container ${styles.heroGrid}`}>
+          <div className={styles.heroContent}>
+            <span className="eyebrow eyebrow-left animate-fade-in-up">Déménagement · Talence &amp; toute la France</span>
+
             <h1 className={styles.heroTitle}>
-              Votre Partenaire de Confiance pour le Transport et le Déménagement
+              <span className={`${styles.heroScript} script gold-text animate-fade-in-up delay-100`}>
+                Votre nouveau départ,<br />notre priorité&nbsp;!
+              </span>
+              <span className={`${styles.heroSub} animate-fade-in-up delay-200`}>
+                Un déménagement en toute sérénité, partout, pour vous.
+              </span>
             </h1>
-            <p className={styles.heroSubtitle}>
-              Efficacité, Fiabilité et Rapidité. Nous prenons en charge vos biens avec le plus grand soin.
+
+            <p className={`${styles.heroText} animate-fade-in-up delay-300`}>
+              Particuliers comme professionnels, nous prenons en charge vos biens avec le plus grand soin — de l&apos;emballage à l&apos;installation dans votre nouveau lieu de vie.
             </p>
-            
-            <div className={styles.heroWhatsappBanner}>
-              <div className={styles.heroWhatsappBannerContent}>
-                <strong>Visite gratuite & Devis gratuit</strong>
-                <span>Prenez rendez-vous pour une visite, contactez-nous via WhatsApp !</span>
-              </div>
+
+            <div className={`${styles.heroActions} animate-fade-in-up delay-400`}>
+              <a href={waVisit} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
+                <IconWhatsApp /> Visite &amp; devis gratuits
+              </a>
+              <a href={`tel:${SITE.phoneTel}`} className="btn btn-outline btn-lg">
+                <IconPhone /> {SITE.phoneDisplay}
+              </a>
             </div>
 
-            <div className={styles.heroActions}>
-              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20prendre%20rendez-vous%20pour%20une%20visite%20gratuite%20/%20un%20devis%20gratuit." target="_blank" rel="noopener noreferrer" className={`btn ${styles.btnWhatsapp}`}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: '8px' }}>
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a5.8 5.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z"/>
-                </svg>
-                WhatsApp : 06 59 78 02 70
-              </Link>
-              <Link href="/contact" className="btn btn-secondary" style={{ backgroundColor: 'rgba(255,255,255,0.1)', borderColor: 'white', color: 'white' }}>Obtenir un devis</Link>
-            </div>
+            <ul className={`${styles.heroPerks} animate-fade-in-up delay-500`}>
+              <li><IconCheck /> Visite gratuite</li>
+              <li><IconCheck /> Devis sans engagement</li>
+              <li><IconCheck /> Biens assurés</li>
+            </ul>
+          </div>
+
+          <div className={`${styles.heroVisual} animate-fade-in-right delay-200`}>
+            <div className={styles.heroGlow} />
+            <img src="/logo-gold.png" alt="Globe Transport Déménagement" className={`${styles.heroLogo} animate-float`} width={1100} height={453} />
           </div>
         </div>
       </section>
 
-      {/* Formules de Déménagement Section */}
-      <section className={styles.pricingSection}>
+      {/* ============ PILIERS (comme sur la carte) ============ */}
+      <section className={styles.pillars} aria-label="Nos engagements">
+        <div className={`container ${styles.pillarsGrid}`}>
+          {PILLARS.map((p) => (
+            <div key={p.label} className={`${styles.pillar} reveal`}>
+              <span className={styles.pillarIcon}>{p.icon}</span>
+              <span className={styles.pillarLabel}>{p.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ============ SERVICES ============ */}
+      <section className="section">
         <div className="container">
-          <div className={`${styles.sectionHeader} animate-fade-in-up delay-100`}>
-            <h2 className={styles.sectionTitle}>Nos Formules de Déménagement</h2>
-            <p className={styles.sectionDescription}>
-              Choisissez la formule qui correspond le mieux à vos besoins et à votre budget.
-            </p>
+          <div className="section-head reveal">
+            <span className="eyebrow">Nos services</span>
+            <h2>Des solutions <span className="gold-text">sur mesure</span></h2>
+            <p>Que vous soyez un particulier ou une entreprise, nous adaptons chaque prestation à votre projet.</p>
           </div>
-          
-          <div className={styles.pricingGrid}>
-            <div className={`${styles.pricingCard} animate-fade-in-up delay-100`}>
-              <h3 className={styles.pricingTitle}>Économique</h3>
-              <p className={styles.pricingDesc}>La solution idéale pour les petits budgets. Vous emballez, nous transportons.</p>
-              <ul className={styles.pricingList}>
-                <li className={styles.included}>Chargement et déchargement</li>
-                <li className={styles.included}>Transport sécurisé</li>
-                <li className={styles.included}>Mise en place des meubles</li>
-                <li className={styles.excluded}>Démontage / Remontage</li>
-                <li className={styles.excluded}>Emballage des cartons</li>
-                <li className={styles.excluded}>Protection spécifique (Luxe)</li>
-              </ul>
-              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20la%20formule%20Économique." target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ textAlign: 'center' }}>Demander un devis</Link>
-            </div>
 
-            <div className={`${styles.pricingCard} ${styles.popular} animate-fade-in-up delay-200`}>
-              <div className={styles.popularBadge}>Populaire</div>
-              <h3 className={styles.pricingTitle}>Standard</h3>
-              <p className={styles.pricingDesc}>Le meilleur compromis. Nous gérons le mobilier (démontage/remontage), vous gérez les cartons.</p>
-              <ul className={styles.pricingList}>
-                <li className={styles.included}>Chargement et déchargement</li>
-                <li className={styles.included}>Transport sécurisé</li>
-                <li className={styles.included}>Mise en place des meubles</li>
-                <li className={styles.included}>Démontage et remontage</li>
-                <li className={styles.excluded}>Emballage des cartons</li>
-                <li className={styles.excluded}>Protection spécifique (Luxe)</li>
-              </ul>
-              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20la%20formule%20Standard." target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ textAlign: 'center' }}>Demander un devis</Link>
-            </div>
-
-            <div className={`${styles.pricingCard} animate-fade-in-up delay-300`}>
-              <h3 className={styles.pricingTitle}>Luxe</h3>
-              <p className={styles.pricingDesc}>La prestation complète. Protection maximale (meubles, objets fragiles) et prise en charge totale.</p>
-              <ul className={styles.pricingList}>
-                <li className={styles.included}>Chargement et déchargement</li>
-                <li className={styles.included}>Transport sécurisé</li>
-                <li className={styles.included}>Mise en place des meubles</li>
-                <li className={styles.included}>Démontage et remontage</li>
-                <li className={styles.included}>Emballage complet (fragile & non fragile)</li>
-                <li className={styles.included}>Protection (Housses de meubles, bulles pro)</li>
-              </ul>
-              <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20un%20devis%20pour%20la%20formule%20Luxe." target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ textAlign: 'center' }}>Demander un devis</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Custom Logistics Section */}
-      <section className={styles.customSection}>
-        <div className={`container ${styles.customContainer}`}>
-          <div className={`${styles.customText} animate-fade-in-left`}>
-            <h2>Une Logistique Sur Mesure</h2>
-            <p>
-              Parce que chaque déménagement est unique, nous concevons des solutions parfaitement adaptées à vos besoins. De l'emballage de vos objets les plus fragiles jusqu'à la réinstallation complète dans vos nouveaux locaux, nous maîtrisons chaque maillon de la chaîne logistique.
-            </p>
-            <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold', color: 'var(--color-primary)' }}>
-                <span style={{ color: 'var(--color-accent)', fontSize: '1.5rem' }}>✓</span> Sur Mesure
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold', color: 'var(--color-primary)' }}>
-                <span style={{ color: 'var(--color-accent)', fontSize: '1.5rem' }}>✓</span> Sans Stress
-              </div>
-            </div>
-          </div>
-          <div className={`${styles.customImageWrapper} animate-fade-in-right delay-200`}>
-            <div className={styles.customShapeBg}></div>
-            <img 
-              src="/realistic_mover.png" 
-              alt="Déménageur avec carton" 
-              className={styles.customImage}
-              style={{ mixBlendMode: 'multiply', boxShadow: 'none', borderRadius: '0' }}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Mini Galerie / Autres visuels */}
-      <section className="section" style={{ padding: '2rem 0', backgroundColor: 'var(--color-background)', position: 'relative', zIndex: 1 }}>
-        <div className="container">
-          <p style={{ textAlign: 'center', color: '#666', marginBottom: '2rem', fontSize: '1rem', fontStyle: 'italic', opacity: 0.8 }}>
-            D'autres aperçus (générés sur mesure)
-          </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-            <div className="animate-fade-in-up delay-100 hover-lift">
-              <img src="/realistic_mover.png" alt="Déménageur" style={{ width: '220px', height: '160px', objectFit: 'cover', borderRadius: '12px', boxShadow: 'var(--shadow)' }} />
-            </div>
-            <div className="animate-fade-in-up delay-200 hover-lift">
-              <img src="/moving_boxes.png" alt="Cartons" style={{ width: '220px', height: '160px', objectFit: 'cover', borderRadius: '12px', boxShadow: 'var(--shadow)' }} />
-            </div>
-            <div className="animate-fade-in-up delay-300 hover-lift">
-              <img src="/boxes_iso.png" alt="Cartons 3D" style={{ width: '220px', height: '160px', objectFit: 'cover', borderRadius: '12px', boxShadow: 'var(--shadow)' }} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="section section-alt" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="container">
-          <div className={`${styles.sectionHeader} animate-fade-in-up delay-100`}>
-            <h2 className={styles.sectionTitle}>Nos Services Principaux</h2>
-            <p className={styles.sectionDescription}>
-              Des solutions adaptées à tous vos besoins logistiques, que vous soyez un particulier ou un professionnel.
-            </p>
-          </div>
-          
           <div className={styles.servicesGrid}>
-            <div className="animate-fade-in-up delay-100">
-              <ServiceCard 
+            <div className="reveal delay-100">
+              <ServiceCard
+                index={1}
+                icon={<IconHome />}
                 title="Déménagement Particuliers"
-                description="Un service complet pour un déménagement en toute sérénité. Nous gérons l'emballage, le transport et le déballage de vos biens."
-                icon="🏠"
+                description="Un service complet pour déménager en toute sérénité : emballage, démontage, transport et réinstallation de vos biens."
               />
             </div>
-            <div className="animate-fade-in-up delay-200">
-              <ServiceCard 
-                title="Déménagement Entreprises"
-                description="Transfert de bureaux et d'équipements sans interruption de votre activité. Rapidité et efficacité garanties."
-                icon="🏢"
+            <div className="reveal delay-200">
+              <ServiceCard
+                index={2}
+                icon={<IconBuilding />}
+                title="Déménagement Professionnels"
+                description="Transfert de bureaux, matériel et archives, planifié pour limiter l'interruption de votre activité."
               />
             </div>
-            <div className="animate-fade-in-up delay-300">
-              <ServiceCard 
+            <div className="reveal delay-300">
+              <ServiceCard
+                index={3}
+                icon={<IconTruck />}
                 title="Transport de Marchandises"
                 description="Livraison sécurisée et ponctuelle de vos marchandises, du petit colis à la palette encombrante."
-                icon="🚚"
               />
             </div>
+          </div>
+
+          <div className={`${styles.centerLink} reveal`}>
+            <Link href="/services" className="btn btn-outline">Voir tous nos services</Link>
           </div>
         </div>
       </section>
 
-      {/* Zone d'activité Section */}
-      <section className={styles.zoneSection}>
-        <div className="container">
-          <div className={`${styles.sectionHeader} animate-fade-in-up delay-100`}>
-            <h2 className={styles.sectionTitle}>Notre Zone d'Intervention</h2>
-            <p className={styles.sectionDescription}>
-              De la proximité à la mobilité nationale, nous vous accompagnons partout.
-            </p>
-          </div>
-          
-          <div className={styles.zoneContainer}>
-            <div className={`${styles.zoneContent} animate-fade-in-left delay-200`}>
-              <h3 style={{ margin: 0, marginBottom: '1rem' }}>Bordeaux & Alentours</h3>
-              <p style={{ color: '#555', lineHeight: '1.6', fontSize: '1.1rem', margin: 0 }}>
-                Basés en plein cœur de la région, nous intervenons rapidement pour tous vos besoins logistiques et de déménagement en Gironde.
-              </p>
-              <div className={styles.cityTags}>
-                <span className={styles.cityTag}>Bordeaux</span>
-                <span className={styles.cityTag}>Mérignac</span>
-                <span className={styles.cityTag}>Pessac</span>
-                <span className={styles.cityTag}>Talence</span>
-                <span className={styles.cityTag}>Villenave-d'Ornon</span>
-                <span className={styles.cityTag}>Bègles</span>
-                <span className={styles.cityTag}>Libourne</span>
-                <span className={styles.cityTag}>Arcachon</span>
-              </div>
+      {/* ============ FORMULES ============ */}
+      <div className="section-alt">
+        <Pricing />
+      </div>
 
-              <div className={styles.nationalText}>
+      {/* ============ ÉTAPES ============ */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head reveal">
+            <span className="eyebrow">Comment ça marche</span>
+            <h2>Votre déménagement en <span className="gold-text">3 étapes</span></h2>
+            <p>Un accompagnement simple et transparent, du premier appel jusqu&apos;à la remise des clés.</p>
+          </div>
+
+          <ol className={styles.steps}>
+            {STEPS.map((s, i) => (
+              <li key={s.title} className={`${styles.step} reveal delay-${(i + 1) * 100}`}>
+                <div className={styles.stepTop}>
+                  <span className={styles.stepNum}>{i + 1}</span>
+                  <span className={styles.stepIcon}>{s.icon}</span>
+                </div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ============ POURQUOI NOUS ============ */}
+      <section className={`section section-alt ${styles.why}`}>
+        <div className={`container ${styles.whyGrid}`}>
+          <div className={`${styles.whyImage} reveal`}>
+            <div className={styles.cards}>
+              <Image src="/carte-slogan.jpg" alt="Carte Globe Transport : Votre nouveau départ, notre priorité !" width={1206} height={461} sizes="(min-width: 992px) 480px, 85vw" className={styles.cardBack} />
+              <Image src="/carte-logo.jpg" alt="Carte de visite Globe Transport Déménagement" width={1206} height={500} sizes="(min-width: 992px) 480px, 85vw" className={styles.cardFront} />
+            </div>
+            <div className={styles.whyBadge}>
+              <span className="script">Un seul appel,</span>
+              <strong>on s&apos;occupe du reste.</strong>
+            </div>
+          </div>
+
+          <div className={`${styles.whyText} reveal delay-200`}>
+            <span className="eyebrow eyebrow-left">Pourquoi Globe Transport</span>
+            <h2>L&apos;exigence d&apos;un service <span className="gold-text">haut de gamme</span></h2>
+            <p>
+              Forts de notre expérience, nous mettons tout en œuvre pour vous offrir un service de qualité supérieure. Notre engagement repose sur trois piliers fondamentaux.
+            </p>
+
+            <ul className={styles.whyList}>
+              <li>
+                <span className={styles.whyIcon}><IconShield /></span>
+                <div>
+                  <strong>Fiabilité</strong>
+                  <p>Un soin particulier apporté à vos biens, des équipes expérimentées et une assurance incluse.</p>
+                </div>
+              </li>
+              <li>
+                <span className={styles.whyIcon}><IconCheck /></span>
+                <div>
+                  <strong>Efficacité</strong>
+                  <p>Des méthodes éprouvées et un matériel adapté pour un déménagement rapide et sans casse.</p>
+                </div>
+              </li>
+              <li>
+                <span className={styles.whyIcon}><IconClock /></span>
+                <div>
+                  <strong>Rapidité</strong>
+                  <p>Intervention sous 48 à 72 h selon disponibilité et respect strict des délais annoncés.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ ZONE ============ */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head reveal">
+            <span className="eyebrow">Zone d&apos;intervention</span>
+            <h2>De Bordeaux à <span className="gold-text">toute la France</span></h2>
+            <p>De la proximité à la mobilité nationale, nous vous accompagnons partout.</p>
+          </div>
+
+          <div className={styles.zoneGrid}>
+            <div className={`${styles.zoneCard} reveal`}>
+              <div className={styles.zoneHead}>
+                <span className={styles.zoneIcon}><IconPin /></span>
+                <div>
+                  <h3>Bordeaux &amp; Gironde</h3>
+                  <p>Basés à Talence, nous intervenons rapidement dans toute la métropole et le département.</p>
+                </div>
+              </div>
+              <div className={styles.cityTags}>
+                {CITIES.map((c) => <span key={c} className={styles.cityTag}>{c}</span>)}
+              </div>
+              <div className={styles.national}>
                 <h4>Toute la France</h4>
-                <p>
-                  Votre projet nous emmène plus loin ? Nous organisons vos transports et déménagements sur l'ensemble du territoire national avec la même exigence de qualité.
-                </p>
+                <p>Votre projet vous emmène plus loin&nbsp;? Nous organisons vos déménagements sur l&apos;ensemble du territoire, avec la même exigence de qualité.</p>
               </div>
             </div>
 
-            <div className={`${styles.mapWrapper} animate-fade-in-right delay-300`}>
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d181140.23199859593!2d-0.7029524021200407!3d44.86370420793616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e8f751ca81%3A0x796386037b397a89!2sBordeaux!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" 
-                style={{ border: 0 }} 
-                allowFullScreen={false} 
-                loading="lazy" 
+            <div className={`${styles.mapWrapper} reveal delay-200`}>
+              <iframe
+                title="Carte de la zone d'intervention autour de Bordeaux"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d181140.23199859593!2d-0.7029524021200407!3d44.86370420793616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e8f751ca81%3A0x796386037b397a89!2sBordeaux!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
@@ -230,51 +256,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features/Trust Section */}
-      <section className="section" style={{ position: 'relative', zIndex: 1, paddingBottom: '8rem' }}>
-        <div className={`container ${styles.featuresContainer}`}>
-          <div className={`${styles.featuresText} animate-fade-in-left delay-200`}>
-            <h2>Pourquoi choisir Globe Transport ?</h2>
-            <p>Forts de notre expérience, nous mettons tout en œuvre pour vous offrir un service de qualité supérieure. Notre engagement repose sur trois piliers fondamentaux :</p>
-            
-            <ul className={styles.featureList}>
-              <li>
-                <strong>Efficacité</strong>: Des processus optimisés pour un gain de temps maximal.
-              </li>
-              <li>
-                <strong>Fiabilité</strong>: Un soin particulier apporté à vos biens et des équipes expérimentées.
-              </li>
-              <li>
-                <strong>Rapidité</strong>: Respect strict des délais annoncés.
-              </li>
-            </ul>
-            
-            {/* <Link href="/about" className="btn btn-primary" style={{ marginTop: '1rem' }}>
-              En savoir plus sur nous
-            </Link> */}
-          </div>
-          <div className={`${styles.featuresImage} animate-fade-in-right delay-400`}>
-            <div className={`${styles.imageWrapper} animate-fade-in-up delay-200`} style={{ flex: 1, minWidth: '300px' }}>
-              <img src="/movers_team.png" alt="Équipe Globe Transport" width={800} height={600} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ============ FAQ ============ */}
+      <FAQ />
 
-      {/* Visite & Rendez-vous CTA Section */}
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaContainer}>
-          <h2 className={`${styles.ctaTitle} animate-fade-in-up`}>Visite gratuite & Devis gratuit</h2>
-          <p className={`${styles.ctaSubtitle} animate-fade-in-up delay-100`}>
-            Prenez rendez-vous dès aujourd'hui. Nos experts se déplacent gratuitement pour évaluer vos besoins et vous proposer un devis sur mesure.
-          </p>
-          <div className={`${styles.ctaActions} animate-fade-in-up delay-200`}>
-            <Link href="https://wa.me/33659780270?text=Bonjour,%20je%20souhaite%20prendre%20rendez-vous%20pour%20une%20visite%20gratuite%20et%20un%20devis." target="_blank" rel="noopener noreferrer" className={styles.btnWhatsappLarge}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a5.8 5.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z"/>
-              </svg>
-              Contactez-nous via WhatsApp : 06 59 78 02 70
-            </Link>
+      {/* ============ CTA ============ */}
+      <section className={styles.cta}>
+        <div className="container">
+          <div className={`${styles.ctaPanel} reveal`}>
+            <GoldSwoosh className={styles.ctaSwoosh} />
+            <span className="eyebrow">Visite gratuite &amp; devis gratuit</span>
+            <h2 className={styles.ctaTitle}>
+              <span className="script gold-text">Prêt pour votre nouveau départ&nbsp;?</span>
+            </h2>
+            <p className={styles.ctaText}>
+              Prenez rendez-vous dès aujourd&apos;hui. Nous nous déplaçons gratuitement pour évaluer vos besoins et vous proposer un devis sur mesure.
+            </p>
+            <div className={styles.ctaActions}>
+              <a href={whatsappLink("Bonjour, je souhaite prendre rendez-vous pour une visite gratuite et un devis.")} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
+                <IconWhatsApp /> Écrire sur WhatsApp
+              </a>
+              <a href={`tel:${SITE.phoneTel}`} className="btn btn-outline btn-lg">
+                <IconPhone /> Appeler le {SITE.phoneDisplay}
+              </a>
+            </div>
           </div>
         </div>
       </section>

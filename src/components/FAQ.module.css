@@ -1,34 +1,83 @@
-.faqGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  max-width: 900px;
+.faqList {
+  max-width: 860px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
 }
 
-@media (min-width: 768px) {
-  .faqGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.faqCard {
-  background: white;
-  padding: 2rem;
+.item {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  border-left: 4px solid var(--color-accent);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.item[open] {
+  border-color: var(--border-strong);
+  background: linear-gradient(180deg, var(--surface-3), var(--surface-2));
 }
 
 .question {
-  font-size: 1.15rem;
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-  line-height: 1.4;
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.35rem 1.6rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--text);
+}
+
+.question::-webkit-details-marker {
+  display: none;
+}
+
+.question:hover {
+  color: var(--gold-light);
+}
+
+.toggle {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  flex-shrink: 0;
+  transition: transform 0.35s var(--ease), background 0.35s ease;
+}
+
+.toggle::before,
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11px;
+  height: 1.5px;
+  background: var(--gold);
+  transform: translate(-50%, -50%);
+}
+
+.toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  transition: opacity 0.3s ease;
+}
+
+.item[open] .toggle {
+  transform: rotate(180deg);
+  background: rgba(212, 175, 55, 0.12);
+}
+
+.item[open] .toggle::after {
+  opacity: 0;
 }
 
 .answer {
-  color: #555;
-  line-height: 1.6;
-  font-size: 1rem;
+  padding: 0 1.6rem 1.5rem;
+  color: var(--text-muted);
+  line-height: 1.75;
 }

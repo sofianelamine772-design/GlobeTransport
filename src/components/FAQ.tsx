@@ -1,39 +1,47 @@
 import styles from './FAQ.module.css';
 
-export default function FAQ() {
-  const faqs = [
-    {
-      q: "Quels sont vos délais d'intervention ?",
-      a: "Nous pouvons généralement intervenir sous 48 à 72 heures selon la période de l'année et votre localisation."
-    },
-    {
-      q: "Fournissez-vous les cartons de déménagement ?",
-      a: "Oui, nous proposons une gamme complète de matériel d'emballage (cartons, adhésifs, papier bulle) incluse dans nos forfaits."
-    },
-    {
-      q: "Mes biens sont-ils assurés pendant le transport ?",
-      a: "Absolument. Toutes nos prestations incluent une assurance contractuelle pour garantir la sécurité de votre patrimoine."
-    },
-    {
-      q: "Faites-vous du démontage/remontage de meubles ?",
-      a: "Oui, nos équipes sont formées pour démonter et remonter vos meubles avec le plus grand soin."
-    }
-  ];
+const FAQS = [
+  {
+    q: "Quels sont vos délais d'intervention ?",
+    a: "Nous pouvons généralement intervenir sous 48 à 72 heures selon la période de l'année et votre localisation.",
+  },
+  {
+    q: 'Fournissez-vous les cartons de déménagement ?',
+    a: "Oui, nous proposons une gamme complète de matériel d'emballage (cartons, adhésifs, papier bulle) incluse dans nos forfaits.",
+  },
+  {
+    q: 'Mes biens sont-ils assurés pendant le transport ?',
+    a: 'Absolument. Toutes nos prestations incluent une assurance contractuelle pour garantir la sécurité de vos biens.',
+  },
+  {
+    q: 'Faites-vous du démontage / remontage de meubles ?',
+    a: 'Oui, nos équipes sont formées pour démonter et remonter vos meubles avec le plus grand soin (formules Standard et Luxe).',
+  },
+  {
+    q: 'La visite et le devis sont-ils vraiment gratuits ?',
+    a: "Oui. Nous nous déplaçons gratuitement pour évaluer le volume et vos besoins, puis nous vous remettons un devis détaillé, sans engagement.",
+  },
+];
 
+export default function FAQ() {
   return (
-    <section className="section" style={{ backgroundColor: 'var(--color-background-alt)', position: 'relative', zIndex: 1 }}>
+    <section className="section section-alt">
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Questions Fréquentes</h2>
-          <p style={{ color: '#666', fontSize: '1.1rem' }}>Tout ce que vous devez savoir avant votre déménagement.</p>
+        <div className="section-head reveal">
+          <span className="eyebrow">FAQ</span>
+          <h2>Questions <span className="gold-text">fréquentes</span></h2>
+          <p>Tout ce que vous devez savoir avant votre déménagement.</p>
         </div>
-        
-        <div className={styles.faqGrid}>
-          {faqs.map((faq, index) => (
-            <div key={index} className={`${styles.faqCard} animate-fade-in-up delay-${(index + 1) * 100} hover-lift`}>
-              <h4 className={styles.question}>{faq.q}</h4>
+
+        <div className={styles.faqList}>
+          {FAQS.map((faq, index) => (
+            <details key={faq.q} className={`${styles.item} reveal`} open={index === 0}>
+              <summary className={styles.question}>
+                {faq.q}
+                <span className={styles.toggle} aria-hidden />
+              </summary>
               <p className={styles.answer}>{faq.a}</p>
-            </div>
+            </details>
           ))}
         </div>
       </div>

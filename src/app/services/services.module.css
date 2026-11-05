@@ -1,0 +1,58 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 3rem;
+  border-radius: 22px;
+  border: 1px solid var(--gold);
+  background:
+    radial-gradient(ellipse 60% 120% at 0% 0%, rgba(212, 175, 55, 0.16), transparent 70%),
+    linear-gradient(180deg, #13110b, var(--surface));
+}
+
+.banner h2 {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.6rem;
+}
+
+.banner p {
+  color: var(--text-muted);
+  max-width: 540px;
+}
+
+.bannerActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .banner {
+    padding: 2.2rem 1.4rem;
+  }
+  .bannerActions :global(.btn) {
+    width: 100%;
+  }
+}

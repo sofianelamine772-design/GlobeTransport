@@ -2,72 +2,94 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import styles from './Navbar.module.css';
 import { usePathname } from 'next/navigation';
+import styles from './Navbar.module.css';
+import { SITE } from '../lib/site';
+import { IconPhone, IconMail } from './Icons';
+
+const LINKS = [
+  { href: '/', label: 'Accueil' },
+  { href: '/services', label: 'Nos Services' },
+  { href: '/contact', label: 'Contact' },
+];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   // Fermer le menu lors d'un changement de page
-  useEffect(() => {
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
     setIsMenuOpen(false);
-  }, [pathname]);
+  }
 
-  // Bloquer le scroll quand le menu est ouvert (avec nettoyage sécurisé)
+  // Ombre / fond renforcé au défilement
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    // Nettoyage au démontage pour éviter les bugs de scroll bloqué
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Bloquer le scroll quand le menu est ouvert
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
       <div className={`container ${styles.navbar}`}>
-        <Link 
-          href="/" 
-          className={styles.logoContainer} 
-          onClick={(e) => {
-            if (pathname === '/') {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+        <Link
+          href="/"
+          className={styles.brand}
+          aria-label="Globe Transport Déménagement — Accueil"
+          onClick={() => {
+            if (pathname === '/') window.scrollTo({ top: 0, behavior: 'smooth' });
             setIsMenuOpen(false);
           }}
         >
-          <img 
-            src="/logofinal.png" 
-            alt="Globe Transport Logo" 
-            width={240} 
-            height={80} 
-            className={styles.logo}
-          />
+          <img src="/globe-gold.png" alt="" width={165} height={110} className={styles.brandGlobe} />
+          <span className={styles.brandText}>
+            <span className={`${styles.brandName} gold-text`}>Globe Transport</span>
+            <span className={styles.brandSub}>Déménagement</span>
+          </span>
         </Link>
 
         {/* Navigation Bureau */}
-        <nav className={styles.navDesktop}>
+        <nav className={styles.navDesktop} aria-label="Navigation principale">
           <ul className={styles.navList}>
-            <li><Link href="/" className={styles.navLink}>Accueil</Link></li>
-            <li><Link href="/services" className={styles.navLink}>Nos Services</Link></li>
-            {/* <li><Link href="/about" className={styles.navLink}>À Propos</Link></li> */}
-            <li><Link href="/contact" className={styles.navLink}>Contact</Link></li>
+            {LINKS.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  className={`${styles.navLink} ${pathname === l.href ? styles.navLinkActive : ''}`}
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
         <div className={styles.actionsDesktop}>
-          <Link href="/contact" className="btn btn-primary">Demander un devis</Link>
+          <a href={`tel:${SITE.phoneTel}`} className={styles.phoneLink}>
+            <IconPhone />
+            {SITE.phoneDisplay}
+          </a>
+          <Link href="/contact" className="btn btn-primary">Devis gratuit</Link>
         </div>
 
         {/* Bouton Menu Burger */}
-        <button 
-          className={`${styles.burgerBtn} ${isMenuOpen ? styles.burgerBtnOpen : ''}`} 
+        <button
+          className={`${styles.burgerBtn} ${isMenuOpen ? styles.burgerBtnOpen : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Menu"
+          aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-expanded={isMenuOpen}
         >
           <span></span>
           <span></span>
@@ -75,33 +97,34 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Overlay sombre en arrière-plan */}
-      <div 
+      {/* Overlay */}
+      <div
         className={`${styles.mobileMenuOverlay} ${isMenuOpen ? styles.mobileMenuOverlayOpen : ''}`}
         onClick={() => setIsMenuOpen(false)}
       ></div>
 
-      {/* Tiroir (Drawer) latéral droit */}
+      {/* Tiroir mobile */}
       <div className={`${styles.mobileMenuDrawer} ${isMenuOpen ? styles.mobileMenuDrawerOpen : ''}`}>
-        <nav className={styles.navMobile}>
+        <nav className={styles.navMobile} aria-label="Navigation mobile">
           <ul className={styles.navMobileList}>
-            <li style={{ transitionDelay: '0.1s' }}><Link href="/" className={styles.navMobileLink}>Accueil</Link></li>
-            <li style={{ transitionDelay: '0.15s' }}><Link href="/services" className={styles.navMobileLink}>Nos Services</Link></li>
-            {/* <li style={{ transitionDelay: '0.2s' }}><Link href="/about" className={styles.navMobileLink}>À Propos</Link></li> */}
-            <li style={{ transitionDelay: '0.25s' }}><Link href="/contact" className={styles.navMobileLink}>Contact</Link></li>
+            {LINKS.map((l, i) => (
+              <li key={l.href} style={{ transitionDelay: `${0.1 + i * 0.06}s` }}>
+                <Link href={l.href} className={styles.navMobileLink}>{l.label}</Link>
+              </li>
+            ))}
           </ul>
-          
+
           <div className={styles.mobileDivider} style={{ transitionDelay: '0.3s' }}></div>
 
           <div className={styles.mobileContactInfo} style={{ transitionDelay: '0.35s' }}>
-            <p><strong>Besoin d'aide ?</strong></p>
-            <p>06 59 78 02 70</p>
-            <p>globe-transport-déménagement@hotmail.com</p>
+            <p className={styles.mobileScript}>Besoin d&apos;aide ?</p>
+            <a href={`tel:${SITE.phoneTel}`}><IconPhone /> {SITE.phoneDisplay}</a>
+            <a href={`mailto:${SITE.email}`}><IconMail /> {SITE.email}</a>
           </div>
 
           <div className={styles.mobileActions} style={{ transitionDelay: '0.4s' }}>
-            <Link href="/contact" className="btn btn-primary hover-lift" style={{ width: '100%', padding: '1rem', fontSize: '1.1rem', backgroundColor: 'var(--color-accent)' }}>
-              Demander un devis
+            <Link href="/contact" className="btn btn-primary btn-lg" style={{ width: '100%' }}>
+              Demander un devis gratuit
             </Link>
           </div>
         </nav>

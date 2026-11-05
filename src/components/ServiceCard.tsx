@@ -1,19 +1,20 @@
+import type { ReactNode } from 'react';
 import styles from './ServiceCard.module.css';
 
 interface ServiceCardProps {
   title: string;
   description: string;
-  icon: string;
+  icon: ReactNode;
+  index?: number;
 }
 
-export default function ServiceCard({ title, description, icon }: ServiceCardProps) {
+export default function ServiceCard({ title, description, icon, index }: ServiceCardProps) {
   return (
-    <div className={styles.card}>
-      <div className={styles.iconWrapper}>
-        <span className={styles.icon}>{icon}</span>
-      </div>
+    <article className={`lux-card ${styles.card}`}>
+      {index !== undefined && <span className={styles.number}>{String(index).padStart(2, '0')}</span>}
+      <div className={styles.iconWrapper}>{icon}</div>
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.description}>{description}</p>
-    </div>
+    </article>
   );
 }

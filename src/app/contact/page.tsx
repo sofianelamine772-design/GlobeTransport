@@ -1,84 +1,81 @@
+import type { Metadata } from "next";
 import styles from './page.module.css';
+import { SITE, whatsappLink } from '../../lib/site';
+import { IconPhone, IconMail, IconWhatsApp, IconPin, IconArrow } from '../../components/Icons';
+
+export const metadata: Metadata = {
+  title: "Contact & Devis gratuit",
+  description:
+    "Contactez Globe Transport Déménagement à Talence : téléphone, WhatsApp ou email. Visite et devis gratuits pour votre déménagement.",
+};
 
 export default function Contact() {
-  const phoneNumber = "0659780270"; // Format technique pour le lien
-  const whatsappUrl = `https://wa.me/33659780270?text=${encodeURIComponent("Bonjour, je souhaite avoir des informations concernant vos services de déménagement.")}`;
-  const emailAddress = "globe-transport-déménagement@hotmail.com";
+  const cards = [
+    {
+      href: `tel:${SITE.phoneTel}`,
+      icon: <IconPhone />,
+      title: 'Téléphone',
+      value: SITE.phoneDisplay,
+      action: 'Appeler directement',
+      big: true,
+    },
+    {
+      href: whatsappLink("Bonjour, je souhaite avoir des informations concernant vos services de déménagement."),
+      icon: <IconWhatsApp />,
+      title: 'WhatsApp',
+      value: 'Réponse rapide, photos & visite',
+      action: 'Ouvrir la discussion',
+      external: true,
+    },
+    {
+      href: `mailto:${SITE.email}`,
+      icon: <IconMail />,
+      title: 'Email',
+      value: SITE.email,
+      action: 'Envoyer un email',
+    },
+    {
+      href: SITE.mapsUrl,
+      icon: <IconPin />,
+      title: 'Adresse',
+      value: `${SITE.street}, ${SITE.postalCode} ${SITE.city}`,
+      action: 'Voir sur la carte',
+      external: true,
+    },
+  ];
 
   return (
     <>
-      <section className="section" style={{ 
-        backgroundImage: "linear-gradient(rgba(0, 59, 115, 0.8), rgba(0, 59, 115, 0.95)), url('/hero_truck.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        color: 'white', 
-        textAlign: 'center', 
-        padding: '8rem 1rem 6rem', 
-        clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0 100%)', 
-        marginBottom: '4rem' 
-      }}>
+      <section className="page-hero">
         <div className="container animate-fade-in-up">
-          <h1 style={{ color: 'white', fontSize: '3rem', margin: '0 0 1rem 0' }}>Contactez-nous</h1>
-          <p style={{ fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto', opacity: 0.9 }}>
-            Notre équipe est à votre disposition pour répondre à toutes vos demandes avec réactivité.
-          </p>
+          <span className="eyebrow">Visite gratuite · Devis gratuit</span>
+          <h1>Contactez-<span className="gold-text">nous</span></h1>
+          <p>Notre équipe est à votre disposition pour répondre à toutes vos demandes avec réactivité.</p>
         </div>
       </section>
 
-      <section className="section" style={{ position: 'relative', zIndex: 1, paddingBottom: '6rem' }}>
+      <section className="section">
         <div className="container">
           <div className={styles.cardsContainer}>
-            
-            {/* Téléphone */}
-            <a href={`tel:${phoneNumber}`} className={`${styles.card} animate-fade-in-up delay-100 hover-lift`}>
-              <div className={styles.iconWrapper}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.icon}>
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
+            {cards.map((c, i) => (
+              <div key={c.title} className={`reveal delay-${(i + 1) * 100}`}>
+                <a
+                  href={c.href}
+                  className={styles.card}
+                  {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  <span className={styles.iconWrapper}>{c.icon}</span>
+                  <h3>{c.title}</h3>
+                  <p className={c.big ? styles.bigValue : undefined}>{c.value}</p>
+                  <span className={styles.actionText}>{c.action} <IconArrow /></span>
+                </a>
               </div>
-              <h3>Téléphone</h3>
-              <p>06 59 78 02 70</p>
-              <span className={styles.actionText}>Appeler directement</span>
-            </a>
+            ))}
+          </div>
 
-            {/* Email */}
-            <a href={`mailto:${emailAddress}`} className={`${styles.card} animate-fade-in-up delay-200 hover-lift`}>
-              <div className={styles.iconWrapper}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.icon}>
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </div>
-              <h3>Email</h3>
-              <p>{emailAddress}</p>
-              <span className={styles.actionText}>Envoyer un email</span>
-            </a>
-
-            {/* WhatsApp */}
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={`${styles.card} ${styles.whatsappCard} animate-fade-in-up delay-300 hover-lift`}>
-              <div className={styles.iconWrapper}>
-                <svg viewBox="0 0 24 24" fill="currentColor" className={styles.icon}>
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a5.8 5.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z"/>
-                </svg>
-              </div>
-              <h3>WhatsApp</h3>
-              <p>Discussion instantanée</p>
-              <span className={styles.actionText}>Ouvrir le chat</span>
-            </a>
-
-            {/* Adresse */}
-            <a href="https://maps.google.com/?q=140+rue+Robespierre+33400+Talence" target="_blank" rel="noopener noreferrer" className={`${styles.card} animate-fade-in-up delay-400 hover-lift`}>
-              <div className={styles.iconWrapper}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.icon}>
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </div>
-              <h3>Adresse</h3>
-              <p>140 rue Robespierre<br/>33400 Talence</p>
-              <span className={styles.actionText}>Voir sur la carte</span>
-            </a>
-
+          <div className={`${styles.note} reveal`}>
+            <p className="script gold-text">Votre nouveau départ, notre priorité&nbsp;!</p>
+            <p>Envoyez-nous quelques photos de votre logement sur WhatsApp pour une première estimation encore plus rapide.</p>
           </div>
         </div>
       </section>

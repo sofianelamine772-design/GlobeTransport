@@ -1,58 +1,77 @@
 .card {
-  background: var(--color-background-alt);
-  backdrop-filter: blur(10px);
-  border-radius: var(--radius-lg);
-  padding: var(--space-md);
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2.4rem 2rem 2.2rem;
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
-.card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--color-accent);
-  background: #222;
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  height: 1px;
+  background: var(--gold-line);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.number {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.6rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: rgba(212, 175, 55, 0.09);
+  transition: color 0.4s ease;
+}
+
+.card:hover .number {
+  color: rgba(212, 175, 55, 0.2);
 }
 
 .iconWrapper {
-  width: 60px;
-  height: 60px;
-  background-color: var(--color-background-alt);
-  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  border: 1px solid var(--border-strong);
+  background: var(--gold-gradient-soft);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-sm);
-  color: var(--color-primary);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 1.6rem;
+  color: var(--gold-light);
+  transition: var(--transition);
+}
+
+.iconWrapper svg {
+  width: 30px;
+  height: 30px;
 }
 
 .card:hover .iconWrapper {
-  background-color: var(--color-accent);
-  color: white;
-  transform: rotateY(180deg);
-}
-
-.icon {
-  font-size: 1.8rem;
-  transition: transform 0.5s;
-}
-
-.card:hover .icon {
-  transform: rotateY(180deg);
+  background: var(--gold-gradient);
+  color: #0a0a0a;
+  border-color: transparent;
 }
 
 .title {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.8rem;
 }
 
 .description {
-  color: var(--color-text-light);
-  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-size: 0.97rem;
   flex: 1;
 }
